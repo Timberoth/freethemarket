@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>RootNode</Name>
     <Identity>
-      <SourceFilename>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\Content\car.fbx</SourceFilename>
+      <SourceFilename>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\Content\car.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -86,7 +86,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>MatD3D02</Name>
       <Identity>
-        <SourceFilename>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\Content\car.fbx</SourceFilename>
+        <SourceFilename>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\Content\car.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -100,7 +100,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>MatD3D03</Name>
       <Identity>
-        <SourceFilename>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\Content\car.fbx</SourceFilename>
+        <SourceFilename>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\Content\car.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

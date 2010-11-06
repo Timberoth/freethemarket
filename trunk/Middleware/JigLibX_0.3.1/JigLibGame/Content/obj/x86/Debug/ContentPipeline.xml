@@ -7,11 +7,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\box.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\box.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\box_0.xml</Key>
-        <Value>2010-11-05T23:25:24.7694-07:00</Value>
+        <Value>2010-09-02T23:29:58.555-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -20,11 +20,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\capsule.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\capsule.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\capsule_0.xml</Key>
-        <Value>2010-11-05T23:25:25.0124-07:00</Value>
+        <Value>2010-09-02T23:29:58.893-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -33,11 +33,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\sphere.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\sphere.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\sphere_0.xml</Key>
-        <Value>2010-11-05T23:25:25.1634-07:00</Value>
+        <Value>2010-09-02T23:29:58.995-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -46,11 +46,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\StaticMesh.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\StaticMesh.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\StaticMesh_0.xml</Key>
-        <Value>2010-11-05T23:25:25.4074-07:00</Value>
+        <Value>2010-09-02T23:29:59.169-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -59,11 +59,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\plane.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\plane.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\plane_0.xml</Key>
-        <Value>2010-11-05T23:25:25.5244-07:00</Value>
+        <Value>2010-09-02T23:29:59.246-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -72,11 +72,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\combined.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\combined.xnb</Output>
       <Time>2009-04-08T20:39:08-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\combined_0.xml</Key>
-        <Value>2010-11-05T23:25:25.6204-07:00</Value>
+        <Value>2010-09-02T23:29:59.31-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -88,11 +88,11 @@
         <Data Key="RotationX">90</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\pin.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\pin.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\pin_0.xml</Key>
-        <Value>2010-11-05T23:25:25.9314-07:00</Value>
+        <Value>2010-09-02T23:29:59.605-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -101,11 +101,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\compound.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\compound.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\compound_0.xml</Key>
-        <Value>2010-11-05T23:25:26.0794-07:00</Value>
+        <Value>2010-09-02T23:29:59.733-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -114,11 +114,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\cylinder.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\cylinder.xnb</Output>
       <Time>2009-04-07T23:16:50-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\cylinder_0.xml</Key>
-        <Value>2010-11-05T23:25:26.2324-07:00</Value>
+        <Value>2010-09-02T23:30:06.126-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -127,13 +127,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\car.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\car.xnb</Output>
       <Time>2009-04-08T20:31:48-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\car_0.xml</Key>
-        <Value>2010-11-05T23:25:29.6232-07:00</Value>
+        <Value>2010-09-02T23:30:09.152-07:00</Value>
       </Dependency>
-      <Request>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\car_0.xnb</Request>
+      <Request>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\car_0.xnb</Request>
     </Item>
     <Item>
       <Source>wheel.fbx</Source>
@@ -141,13 +141,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\wheel.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\wheel.xnb</Output>
       <Time>2009-04-08T20:39:16-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\wheel_0.xml</Key>
-        <Value>2010-11-05T23:25:31.4232-07:00</Value>
+        <Value>2010-09-02T23:30:10.368-07:00</Value>
       </Dependency>
-      <Request>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\car_0.xnb</Request>
+      <Request>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\car_0.xnb</Request>
     </Item>
     <Item>
       <Source>Font.spritefont</Source>
@@ -155,7 +155,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Font.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Font.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
     </Item>
     <Item>
@@ -164,7 +164,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Font2.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Font2.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
     </Item>
     <Item>
@@ -173,7 +173,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Checker.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Checker.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
     </Item>
     <Item>
@@ -182,7 +182,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\jiglib.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\jiglib.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
     </Item>
     <Item>
@@ -191,9 +191,9 @@
       <Importer>TextureImporter</Importer>
       <Processor>TerrainProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\terrain.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\terrain.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
-      <Request>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Checker_0.xnb</Request>
+      <Request>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Checker_0.xnb</Request>
     </Item>
     <Item>
       <Source>box.x</Source>
@@ -277,7 +277,7 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\car_0.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\car_0.xnb</Output>
       <Time>2009-04-08T20:06:06-07:00</Time>
     </Item>
     <Item>
@@ -299,7 +299,7 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Checker_0.xnb</Output>
+      <Output>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\Checker_0.xnb</Output>
       <Time>2009-04-07T01:02:22-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -307,39 +307,39 @@
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
         <Value>2009-05-14T11:13:52-07:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
         <Value>2009-05-14T11:13:52-07:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
         <Value>2009-05-14T11:13:52-07:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
         <Value>2009-05-14T11:13:52-07:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
         <Value>2009-05-14T11:13:52-07:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\HeightmapProcessor\HeightmapProcessor\bin\x86\Debug\HeightmapProcessor.dll</Key>
+        <Key>C:\projects\Middleware\JigLibX_0.3.1\HeightmapProcessor\HeightmapProcessor\bin\x86\Debug\HeightmapProcessor.dll</Key>
         <Value>2009-04-07T00:43:22-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-08-31T13:50:08.6156-07:00</Value>
+        <Value>2010-08-15T20:15:52.6523356-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>compoundFrame</Name>
     <Identity>
-      <SourceFilename>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibGame\Content\compound.x</SourceFilename>
+      <SourceFilename>C:\projects\Middleware\JigLibX_0.3.1\JigLibGame\Content\compound.x</SourceFilename>
       <SourceTool>XImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>

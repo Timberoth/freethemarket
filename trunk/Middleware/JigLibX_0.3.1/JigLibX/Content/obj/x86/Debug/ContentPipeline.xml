@@ -6,15 +6,15 @@
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibX\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibX\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibX\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\projects\FreeTheMarket\Middleware\JigLibX_0.3.1\JigLibX\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\projects\Middleware\JigLibX_0.3.1\JigLibX\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\projects\Middleware\JigLibX_0.3.1\JigLibX\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\projects\Middleware\JigLibX_0.3.1\JigLibX\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\projects\Middleware\JigLibX_0.3.1\JigLibX\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-08-31T13:50:08.6156-07:00</Value>
+        <Value>2010-08-15T20:15:52.6523356-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
