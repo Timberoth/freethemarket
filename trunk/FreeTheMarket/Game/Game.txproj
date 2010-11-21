@@ -6,7 +6,7 @@
 <!--Creator: Torque X Builder-->
 <TorqueXProject>
     <ProjectData>
-        <LastLevel>C:/Repos/Torque X/StarterKits/GuiGame2D/GuiGame2D/data/levels/levelData.txscene</LastLevel>
+        <LastLevel>C:/projects/FreeTheMarket/FreeTheMarket/Game/data/levels/Gameplay.txscene</LastLevel>
         <StaticSprites>
             <SimSet>
                 <canSaveDynamicFields>true</canSaveDynamicFields>
@@ -30,28 +30,186 @@
                     <preload>true</preload>
                     <allowUnload>false</allowUnload>
                     <DynamicFieldCount>10</DynamicFieldCount>
-                    <DynamicFieldName0>refractive</DynamicFieldName0>
+                    <DynamicFieldName0>forceCelled</DynamicFieldName0>
                     <DynamicFieldValue0>0</DynamicFieldValue0>
-                    <DynamicFieldName1>specularColor</DynamicFieldName1>
-                    <DynamicFieldValue1>1 1 1 1</DynamicFieldValue1>
-                    <DynamicFieldName2>normalMap</DynamicFieldName2>
-                    <DynamicFieldValue2>data/images/trident-normal-1.png</DynamicFieldValue2>
-                    <DynamicFieldName3>forceCelled</DynamicFieldName3>
-                    <DynamicFieldValue3>0</DynamicFieldValue3>
-                    <DynamicFieldName4>additive</DynamicFieldName4>
+                    <DynamicFieldName1>additive</DynamicFieldName1>
+                    <DynamicFieldValue1>0</DynamicFieldValue1>
+                    <DynamicFieldName2>enableLighting</DynamicFieldName2>
+                    <DynamicFieldValue2>0</DynamicFieldValue2>
+                    <DynamicFieldName3>specularIntensity</DynamicFieldName3>
+                    <DynamicFieldValue3>1.000</DynamicFieldValue3>
+                    <DynamicFieldName4>translucent</DynamicFieldName4>
                     <DynamicFieldValue4>0</DynamicFieldValue4>
-                    <DynamicFieldName5>enableLighting</DynamicFieldName5>
-                    <DynamicFieldValue5>0</DynamicFieldValue5>
-                    <DynamicFieldName6>specularIntensity</DynamicFieldName6>
-                    <DynamicFieldValue6>1.000</DynamicFieldValue6>
-                    <DynamicFieldName7>translucent</DynamicFieldName7>
+                    <DynamicFieldName5>refractiveAmount</DynamicFieldName5>
+                    <DynamicFieldValue5>1</DynamicFieldValue5>
+                    <DynamicFieldName6>specularPower</DynamicFieldName6>
+                    <DynamicFieldValue6>0.000</DynamicFieldValue6>
+                    <DynamicFieldName7>refractive</DynamicFieldName7>
                     <DynamicFieldValue7>0</DynamicFieldValue7>
-                    <DynamicFieldName8>refractiveAmount</DynamicFieldName8>
-                    <DynamicFieldValue8>1</DynamicFieldValue8>
-                    <DynamicFieldName9>specularPower</DynamicFieldName9>
-                    <DynamicFieldValue9>0.000</DynamicFieldValue9>
+                    <DynamicFieldName8>specularColor</DynamicFieldName8>
+                    <DynamicFieldValue8>1 1 1 1</DynamicFieldValue8>
+                    <DynamicFieldName9>normalMap</DynamicFieldName9>
+                    <DynamicFieldValue9>data/images/trident-normal-1.png</DynamicFieldValue9>
                     <imageName>data/images/trident-d.png</imageName>
                 </t2dImageMapDatablock>
+                <t2dImageMapDatablock name="chronotrigger_crono_movement_sheetMaterial">
+                    <imageMode>CELL</imageMode>
+                    <frameCount>-1</frameCount>
+                    <filterMode>SMOOTH</filterMode>
+                    <filterPad>false</filterPad>
+                    <preferPerf>true</preferPerf>
+                    <cellRowOrder>true</cellRowOrder>
+                    <cellOffsetX>0</cellOffsetX>
+                    <cellOffsetY>0</cellOffsetY>
+                    <cellStrideX>0</cellStrideX>
+                    <cellStrideY>0</cellStrideY>
+                    <cellCountX>4</cellCountX>
+                    <cellCountY>8</cellCountY>
+                    <cellWidth>39</cellWidth>
+                    <cellHeight>40</cellHeight>
+                    <linkImageMaps></linkImageMaps>
+                    <preload>true</preload>
+                    <allowUnload>false</allowUnload>
+                    <DynamicFieldCount>9</DynamicFieldCount>
+                    <DynamicFieldName0>forceCelled</DynamicFieldName0>
+                    <DynamicFieldValue0>1</DynamicFieldValue0>
+                    <DynamicFieldName1>additive</DynamicFieldName1>
+                    <DynamicFieldValue1>0</DynamicFieldValue1>
+                    <DynamicFieldName2>enableLighting</DynamicFieldName2>
+                    <DynamicFieldValue2>0</DynamicFieldValue2>
+                    <DynamicFieldName3>specularIntensity</DynamicFieldName3>
+                    <DynamicFieldValue3>1.000</DynamicFieldValue3>
+                    <DynamicFieldName4>translucent</DynamicFieldName4>
+                    <DynamicFieldValue4>0</DynamicFieldValue4>
+                    <DynamicFieldName5>refractiveAmount</DynamicFieldName5>
+                    <DynamicFieldValue5>1</DynamicFieldValue5>
+                    <DynamicFieldName6>specularPower</DynamicFieldName6>
+                    <DynamicFieldValue6>0.000</DynamicFieldValue6>
+                    <DynamicFieldName7>refractive</DynamicFieldName7>
+                    <DynamicFieldValue7>0</DynamicFieldValue7>
+                    <DynamicFieldName8>specularColor</DynamicFieldName8>
+                    <DynamicFieldValue8>1 1 1 1</DynamicFieldValue8>
+                    <imageName>data/images/chronotrigger_crono_movement_sheet.png</imageName>
+                </t2dImageMapDatablock>
+                <t2dAnimationDatablock name="Walk_Down">
+                    <defaultConfig></defaultConfig>
+                    <imageMap>chronotrigger_crono_movement_sheetMaterial</imageMap>
+                    <animationFrames>0 4 8 12 16 20</animationFrames>
+                    <animationTime>0.75</animationTime>
+                    <animationCycle>true</animationCycle>
+                    <randomStart>false</randomStart>
+                    <startFrame>0</startFrame>
+                    <DynamicFieldCount>0</DynamicFieldCount>
+                </t2dAnimationDatablock>
+                <t2dAnimationDatablock name="Walk_Left">
+                    <defaultConfig></defaultConfig>
+                    <imageMap>chronotrigger_crono_movement_sheetMaterial</imageMap>
+                    <animationFrames>1 5 9 13 17 21</animationFrames>
+                    <animationTime>0.75</animationTime>
+                    <animationCycle>true</animationCycle>
+                    <randomStart>false</randomStart>
+                    <startFrame>0</startFrame>
+                    <DynamicFieldCount>0</DynamicFieldCount>
+                </t2dAnimationDatablock>
+                <t2dAnimationDatablock name="Walk_Up">
+                    <defaultConfig></defaultConfig>
+                    <imageMap>chronotrigger_crono_movement_sheetMaterial</imageMap>
+                    <animationFrames>2 6 10 14 18 22</animationFrames>
+                    <animationTime>0.75</animationTime>
+                    <animationCycle>true</animationCycle>
+                    <randomStart>false</randomStart>
+                    <startFrame>0</startFrame>
+                    <DynamicFieldCount>0</DynamicFieldCount>
+                </t2dAnimationDatablock>
+                <t2dAnimationDatablock name="Walk_Right">
+                    <defaultConfig></defaultConfig>
+                    <imageMap>chronotrigger_crono_movement_sheetMaterial</imageMap>
+                    <animationFrames>3 7 11 15 19 23</animationFrames>
+                    <animationTime>0.75</animationTime>
+                    <animationCycle>true</animationCycle>
+                    <randomStart>false</randomStart>
+                    <startFrame>0</startFrame>
+                    <DynamicFieldCount>0</DynamicFieldCount>
+                </t2dAnimationDatablock>
+                <t2dImageMapDatablock name="chronotrigger_crono_idle_sheetMaterial">
+                    <imageMode>CELL</imageMode>
+                    <frameCount>-1</frameCount>
+                    <filterMode>SMOOTH</filterMode>
+                    <filterPad>false</filterPad>
+                    <preferPerf>true</preferPerf>
+                    <cellRowOrder>true</cellRowOrder>
+                    <cellOffsetX>0</cellOffsetX>
+                    <cellOffsetY>0</cellOffsetY>
+                    <cellStrideX>0</cellStrideX>
+                    <cellStrideY>0</cellStrideY>
+                    <cellCountX>4</cellCountX>
+                    <cellCountY>4</cellCountY>
+                    <cellWidth>39</cellWidth>
+                    <cellHeight>40</cellHeight>
+                    <linkImageMaps></linkImageMaps>
+                    <preload>true</preload>
+                    <allowUnload>false</allowUnload>
+                    <DynamicFieldCount>9</DynamicFieldCount>
+                    <DynamicFieldName0>forceCelled</DynamicFieldName0>
+                    <DynamicFieldValue0>0</DynamicFieldValue0>
+                    <DynamicFieldName1>additive</DynamicFieldName1>
+                    <DynamicFieldValue1>0</DynamicFieldValue1>
+                    <DynamicFieldName2>enableLighting</DynamicFieldName2>
+                    <DynamicFieldValue2>0</DynamicFieldValue2>
+                    <DynamicFieldName3>specularIntensity</DynamicFieldName3>
+                    <DynamicFieldValue3>1.000</DynamicFieldValue3>
+                    <DynamicFieldName4>translucent</DynamicFieldName4>
+                    <DynamicFieldValue4>0</DynamicFieldValue4>
+                    <DynamicFieldName5>refractiveAmount</DynamicFieldName5>
+                    <DynamicFieldValue5>1</DynamicFieldValue5>
+                    <DynamicFieldName6>specularPower</DynamicFieldName6>
+                    <DynamicFieldValue6>0.000</DynamicFieldValue6>
+                    <DynamicFieldName7>refractive</DynamicFieldName7>
+                    <DynamicFieldValue7>0</DynamicFieldValue7>
+                    <DynamicFieldName8>specularColor</DynamicFieldName8>
+                    <DynamicFieldValue8>1 1 1 1</DynamicFieldValue8>
+                    <imageName>data/images/chronotrigger_crono_idle_sheet.png</imageName>
+                </t2dImageMapDatablock>
+                <t2dAnimationDatablock name="Idle_Down">
+                    <defaultConfig></defaultConfig>
+                    <imageMap>chronotrigger_crono_idle_sheetMaterial</imageMap>
+                    <animationFrames>0 4 8 12</animationFrames>
+                    <animationTime>4</animationTime>
+                    <animationCycle>true</animationCycle>
+                    <randomStart>false</randomStart>
+                    <startFrame>0</startFrame>
+                    <DynamicFieldCount>0</DynamicFieldCount>
+                </t2dAnimationDatablock>
+                <t2dAnimationDatablock name="Idle_Left">
+                    <defaultConfig></defaultConfig>
+                    <imageMap>chronotrigger_crono_idle_sheetMaterial</imageMap>
+                    <animationFrames>1 5 9 13</animationFrames>
+                    <animationTime>4</animationTime>
+                    <animationCycle>true</animationCycle>
+                    <randomStart>false</randomStart>
+                    <startFrame>0</startFrame>
+                    <DynamicFieldCount>0</DynamicFieldCount>
+                </t2dAnimationDatablock>
+                <t2dAnimationDatablock name="Idle_Up">
+                    <defaultConfig></defaultConfig>
+                    <imageMap>chronotrigger_crono_idle_sheetMaterial</imageMap>
+                    <animationFrames>2 6 10 14</animationFrames>
+                    <animationTime>4</animationTime>
+                    <animationCycle>true</animationCycle>
+                    <randomStart>false</randomStart>
+                    <startFrame>0</startFrame>
+                    <DynamicFieldCount>0</DynamicFieldCount>
+                </t2dAnimationDatablock>
+                <t2dAnimationDatablock name="Idle_Right">
+                    <defaultConfig></defaultConfig>
+                    <imageMap>chronotrigger_crono_idle_sheetMaterial</imageMap>
+                    <animationFrames>3 7 11 15</animationFrames>
+                    <animationTime>4</animationTime>
+                    <animationCycle>true</animationCycle>
+                    <randomStart>false</randomStart>
+                    <startFrame>0</startFrame>
+                    <DynamicFieldCount>0</DynamicFieldCount>
+                </t2dAnimationDatablock>
             </SimSet>
         </StaticSprites>
         <Brushes>

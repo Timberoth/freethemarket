@@ -13,7 +13,8 @@ using GarageGames.Torque.Platform;
 namespace FreeTheMarket
 {
     [TorqueXmlSchemaType]
-    [TorqueXmlSchemaDependency(Type = typeof(T2DPhysicsComponent))]
+    [TorqueXmlSchemaDependency(Type = typeof(T2DPhysicsComponent))]    
+
     public class MovementComponent : TorqueComponent, ITickObject
     {
         //======================================================
@@ -22,13 +23,77 @@ namespace FreeTheMarket
 
         //======================================================
         #region Public properties, operators, constants, and enums
+
+        public enum Facing
+        {
+            Right,
+            Up,
+            Left,
+            Down,            
+        }
+        
         public int PlayerNumber
         {
             get { return _playerNumber; }
             set { _playerNumber = value; }
+        }       
+
+        
+        /*
+         * Animation Variables 
+         */
+        public T2DAnimationData IdleUp
+        {
+            get { return _idleUp; }
+            set { _idleUp = value; }
         }
+
+        public T2DAnimationData MoveUp
+        {
+            get { return _moveUp; }
+            set { _moveUp = value; }
+        }
+
+
+        public T2DAnimationData IdleDown
+        {
+            get { return _idleDown; }
+            set { _idleDown = value; }
+        }
+
+        public T2DAnimationData MoveDown
+        {
+            get { return _moveDown; }
+            set { _moveDown = value; }
+        }
+
+        public T2DAnimationData IdleLeft
+        {
+            get { return _idleLeft; }
+            set { _idleLeft = value; }
+        }
+
+        public T2DAnimationData MoveLeft
+        {
+            get { return _moveLeft; }
+            set { _moveLeft = value; }
+        }
+
+        public T2DAnimationData IdleRight
+        {
+            get { return _idleRight; }
+            set { _idleRight = value; }
+        }
+
+        public T2DAnimationData MoveRight
+        {
+            get { return _moveRight; }
+            set { _moveRight = value; }
+        }
+        
         #endregion
 
+        
         //======================================================
         #region Public Methods
         public void InterpolateTick(float k)
@@ -38,14 +103,128 @@ namespace FreeTheMarket
         public void ProcessTick(Move move, float elapsed)
         {
             if (move != null)
-            {
+            {               
+                T2DAnimatedSprite currentAnim = _sceneObject as T2DAnimatedSprite;
+
                 // set our test object's Velocity based on stick/keyboard input
                 _sceneObject.Physics.VelocityX = move.Sticks[0].X * 20.0f;
-                _sceneObject.Physics.VelocityY = -move.Sticks[0].Y * 20.0f;
+                _sceneObject.Physics.VelocityY = -move.Sticks[0].Y * 20.0f;                
+
+                // If there's no stick movement, then switch to idle if not already in it
+                if (_sceneObject.Physics.VelocityX == 0.0f && _sceneObject.Physics.VelocityY == 0.0f)
+                {
+                    // Check to see if the character was moving last frame, if so switch to idle anim
+                    if ( (currentAnim != null) && ( _prevVelocity.X != 0.0f || _prevVelocity.Y != 0.0 ) )
+                    {
+                        if( currentAnim.AnimationData == _moveUp )
+                        {
+                            currentAnim.PlayAnimation(_idleUp);
+                        }
+                        else if ( currentAnim.AnimationData == _moveDown )
+                        {
+                            currentAnim.PlayAnimation(_idleDown);
+                        }
+                        else if ( currentAnim.AnimationData == _moveLeft )
+                        {
+                            currentAnim.PlayAnimation(_idleLeft);
+                        }
+                        else if ( currentAnim.AnimationData == _moveRight )
+                        {
+                            currentAnim.PlayAnimation(_idleRight);
+                        }
+                    }
+                }
+
+                // If there is stick movement, then check if we need to switch animations
+                else
+                {
+                    // Check the character's current facing direction, if it has changed, switch animations.
+                    // Note that VelocityY is swapped.
+                    double facingAngle = CalculateFacingAngle( new Vector2( _sceneObject.Physics.VelocityX, -_sceneObject.Physics.VelocityY ) );
+                    
+                    _currentFacing = CalculateFacing(facingAngle);
+                                                           
+                    if (_currentFacing == Facing.Right && currentAnim.AnimationData != _moveRight)
+                    {
+                        currentAnim.PlayAnimation(_moveRight);
+                    }
+                    else if (_currentFacing == Facing.Up && currentAnim.AnimationData != _moveUp)
+                    {
+                        currentAnim.PlayAnimation(_moveUp);
+                    }
+                    else if (_currentFacing == Facing.Left && currentAnim.AnimationData != _moveLeft)
+                    {
+                        currentAnim.PlayAnimation(_moveLeft);
+                    }
+                    else if (_currentFacing == Facing.Down && currentAnim.AnimationData != _moveDown)
+                    {
+                        currentAnim.PlayAnimation(_moveDown);
+                    }
+                }
+
+                // Keep track of previous frame velocity to determine which animation to play
+                _prevVelocity.X = _sceneObject.Physics.VelocityX;
+                _prevVelocity.Y = _sceneObject.Physics.VelocityY;                
             }
         }
+
+        public double CalculateFacingAngle(Vector2 currentVelocity)
+        {
+            double angle = CalculateAngleBetweenVectors(new Vector2(1.0f, 0.0f), currentVelocity);
+
+            // If in Quad III or IV convert to 180 to 360
+            if (currentVelocity.Y < 0)
+            {
+                return (360.0 - angle);
+            }
+            else
+            {
+                return angle;
+            }
+        }
+
+        public double CalculateAngleBetweenVectors( Vector2 v1, Vector2 v2 )
+        {   
+            // Normalize both vectors
+            v1.Normalize();
+            v2.Normalize();
+
+            // Create var to hold dot product result
+            float dotResult = 0.0f;
+            Vector2.Dot( ref v1, ref v2, out dotResult );
+
+            // Convert to degrees
+            return Math.Acos(dotResult) * 180.0 / Math.PI;                       
+        }
+
+        public Facing CalculateFacing(double angle)
+        {
+            if (angle < 45.0f || angle >= 315.0f )
+            {
+                return Facing.Right;
+            }
+            else if( angle >= 45.0f && angle < 135.0f )
+            {
+                return Facing.Up;
+            }
+            else if (angle >= 135.0f && angle < 225.0f)
+            {
+                return Facing.Left;
+            }
+            else if (angle >= 225.0f && angle < 315.0f)
+            {
+                return Facing.Down;
+            }
+            
+            // Should never get here
+            return Facing.Down;            
+        }
+        
         #endregion
 
+        
+        
+        
         //======================================================
         #region Private, protected, internal methods
         protected override bool _OnRegister(TorqueObject owner)
@@ -59,6 +238,9 @@ namespace FreeTheMarket
 
             // tell the process list to notifiy us with ProcessTick and InterpolateTick events
             ProcessList.Instance.AddTickCallback(Owner, this);
+
+            // Start with Down Idle Animation
+
 
             return true;
         }
@@ -101,12 +283,35 @@ namespace FreeTheMarket
                 inputMap.BindMove(keyboardId, (int)Keys.S, MoveMapTypes.StickDigitalDown, 0);
             }
         }
+
+
         #endregion
 
         //======================================================
         #region Private, protected, internal fields
+        
+        // Keep pointer to scene object
         T2DSceneObject _sceneObject;
+        
+        // Track player controlling this object
         int _playerNumber = 0;
+        
+        // Animations to play when facing or moving a certain direction Up, Down, Left or Right
+        T2DAnimationData _idleUp;
+        T2DAnimationData _moveUp;
+        T2DAnimationData _idleRight;
+        T2DAnimationData _moveRight;
+        T2DAnimationData _idleDown;
+        T2DAnimationData _moveDown;
+        T2DAnimationData _idleLeft;
+        T2DAnimationData _moveLeft;
+        
+        // Track facing direction
+        Facing _currentFacing;
+
+        // Track previous velocity values as a vector
+        Vector2 _prevVelocity;
+
         #endregion
     }
 }

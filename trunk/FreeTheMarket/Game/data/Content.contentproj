@@ -116,4 +116,34 @@
     <OutputPath>bin\Xbox 360\Release</OutputPath>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
+  <ItemGroup>
+    <Compile Include="images\chronotrigger_crono_movement_sheet.png">
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Name>chronotrigger_crono_movement_sheet</Name>
+    </Compile>
+    <Compile Include="images\chronotrigger_crono_sheet.png">
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Name>chronotrigger_crono_sheet</Name>
+    </Compile>
+    <Compile Include="images\dragon.png">
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Name>dragon</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="levels\Gameplay.txscene">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Gameplay</Name>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="images\chronotrigger_crono_idle_sheet.png">
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Name>chronotrigger_crono_idle_sheet</Name>
+    </Compile>
+  </ItemGroup>
 </Project>

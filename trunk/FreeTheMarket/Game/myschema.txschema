@@ -70,6 +70,30 @@
       <Element name="PlayerNumber">
         <Type>System.Int32</Type>
       </Element>
+      <Element name="IdleUp">
+        <Type>GarageGames.Torque.T2D.T2DAnimationData</Type>
+      </Element>
+      <Element name="MoveUp">
+        <Type>GarageGames.Torque.T2D.T2DAnimationData</Type>
+      </Element>
+      <Element name="IdleDown">
+        <Type>GarageGames.Torque.T2D.T2DAnimationData</Type>
+      </Element>
+      <Element name="MoveDown">
+        <Type>GarageGames.Torque.T2D.T2DAnimationData</Type>
+      </Element>
+      <Element name="IdleLeft">
+        <Type>GarageGames.Torque.T2D.T2DAnimationData</Type>
+      </Element>
+      <Element name="MoveLeft">
+        <Type>GarageGames.Torque.T2D.T2DAnimationData</Type>
+      </Element>
+      <Element name="IdleRight">
+        <Type>GarageGames.Torque.T2D.T2DAnimationData</Type>
+      </Element>
+      <Element name="MoveRight">
+        <Type>GarageGames.Torque.T2D.T2DAnimationData</Type>
+      </Element>
       <Element name="Components">
         <IsList>true</IsList>
         <Type>GarageGames.Torque.Core.TorqueComponent</Type>
@@ -1073,6 +1097,45 @@
     <Type name="String" fullName="System.String">
       <Element name="Empty">
         <IsStatic>true</IsStatic>
+        <Type>System.String</Type>
+      </Element>
+    </Type>
+    <Type name="T2DAnimationData" fullName="GarageGames.Torque.T2D.T2DAnimationData">
+      <Element name="AnimationDuration">
+        <Type>System.Single</Type>
+      </Element>
+      <Element name="AnimationCycle">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="Material">
+        <Type>GarageGames.Torque.Materials.RenderMaterial</Type>
+      </Element>
+      <Element name="AnimationFrames">
+        <Type>System.String</Type>
+      </Element>
+      <Element name="Components">
+        <IsList>true</IsList>
+        <Type>GarageGames.Torque.Core.TorqueComponent</Type>
+      </Element>
+      <Element name="ObjectType">
+        <Type>GarageGames.Torque.Core.TorqueObjectType</Type>
+      </Element>
+      <Element name="Pool">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="PoolWithComponents">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="IsTemplate">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="IsPersistent">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="OnRegistered">
+        <Type>GarageGames.Torque.Core.OnRegisteredDelegate</Type>
+      </Element>
+      <Element name="Name">
         <Type>System.String</Type>
       </Element>
     </Type>
