@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.GamerServices;
 
 
 
-namespace StarterGame2D
+namespace FreeTheMarket
 {
 
     /// <summary>

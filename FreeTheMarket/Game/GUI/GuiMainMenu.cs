@@ -14,7 +14,7 @@ using GarageGames.Torque.MathUtil;
 using Microsoft.Xna.Framework.GamerServices;
 
 
-namespace StarterGame2D
+namespace FreeTheMarket
 {
     class GuiMainMenu : GUIBitmap, IGUIScreen
     {

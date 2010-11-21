@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 
 
-namespace StarterGame2D
+namespace FreeTheMarket
 {
     public class GuiPlay : GUISceneview, IGUIScreen
     {

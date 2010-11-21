@@ -96,7 +96,7 @@
                     <RotationScale>1.0</RotationScale>
                     <ProcessCollisionsAtRest>false</ProcessCollisionsAtRest>
                 </T2DPhysicsComponent>
-                <MovementComponent type="StarterGame2D.MovementComponent">
+                <MovementComponent type="FreeTheMarket.MovementComponent">
                     <PlayerNumber>0</PlayerNumber>
                 </MovementComponent>
             </Components>

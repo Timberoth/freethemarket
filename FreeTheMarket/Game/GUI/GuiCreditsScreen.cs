@@ -12,7 +12,7 @@ using GarageGames.Torque.MathUtil;
 
 
 
-namespace StarterGame2D
+namespace FreeTheMarket
 {
     class GuiCreditsScreen : GUIBitmap, IGUIScreen
     {
