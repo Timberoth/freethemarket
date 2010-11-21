@@ -11,7 +11,7 @@ using GarageGames.Torque.GUI;
 using GarageGames.Torque.MathUtil;
 
 
-namespace StarterGame2D
+namespace FreeTheMarket
 {
     class GuiHelpScreen : GUIBitmap, IGUIScreen
     {

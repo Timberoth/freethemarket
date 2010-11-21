@@ -62,7 +62,7 @@
         <Type>System.Single</Type>
       </Element>
     </Type>
-    <Type name="MovementComponent" fullName="StarterGame2D.MovementComponent">
+    <Type name="MovementComponent" fullName="FreeTheMarket.MovementComponent">
       <Dependencies>
         <Type>GarageGames.Torque.T2D.T2DPhysicsComponent</Type>
       </Dependencies>
@@ -1234,6 +1234,7 @@
     <Type name="TileLayerCollisionImage" fullName="GarageGames.Torque.T2D.T2DTileLayer+TileLayerCollisionImage" />
     <Type name="TorqueComponent" fullName="GarageGames.Torque.Core.TorqueComponent">
       <DerivedTypes>
+        <Type>FreeTheMarket.MovementComponent</Type>
         <Type>GarageGames.Torque.Lighting.T2DLightComponent</Type>
         <Type>GarageGames.Torque.T2D.T2DAnimationComponent</Type>
         <Type>GarageGames.Torque.T2D.T2DCollisionComponent</Type>
@@ -1245,7 +1246,6 @@
         <Type>GarageGames.Torque.T2D.T2DSizeAnimComponent</Type>
         <Type>GarageGames.Torque.T2D.T2DTriggerComponent</Type>
         <Type>GarageGames.Torque.T2D.T2DWorldLimitComponent</Type>
-        <Type>StarterGame2D.MovementComponent</Type>
       </DerivedTypes>
       <IsInstantiable>false</IsInstantiable>
       <Element name="Components">

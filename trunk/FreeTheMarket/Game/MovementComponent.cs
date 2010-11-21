@@ -10,7 +10,7 @@ using GarageGames.Torque.T2D;
 using GarageGames.Torque.Sim;
 using GarageGames.Torque.Platform;
 
-namespace StarterGame2D
+namespace FreeTheMarket
 {
     [TorqueXmlSchemaType]
     [TorqueXmlSchemaDependency(Type = typeof(T2DPhysicsComponent))]

@@ -10,7 +10,7 @@ using GarageGames.Torque.Platform;
 
 
 
-namespace StarterGame2D
+namespace FreeTheMarket
 {
     /// <summary>
     /// This is the main game class for your game

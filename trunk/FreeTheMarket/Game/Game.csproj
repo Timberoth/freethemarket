@@ -6,13 +6,13 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StarterGame2D</RootNamespace>
+    <RootNamespace>FreeTheMarket</RootNamespace>
     <AssemblyName>Game</AssemblyName>
     <XnaFrameworkVersion>v3.1</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <ApplicationIcon>Game.ico</ApplicationIcon>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>StarterGame2D.Game</StartupObject>
+    <StartupObject>FreeTheMarket.Game</StartupObject>
     <Thumbnail>
     </Thumbnail>
     <XnaCrossPlatformGroupID>{88969f08-b6d0-461a-9efb-3696af767dcb}</XnaCrossPlatformGroupID>

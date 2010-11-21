@@ -1,18 +1,19 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
-    <ProjectGuid>{0d3e39f5-8526-4a99-9441-af70bffd2f05}</ProjectGuid>
+    <ProjectGuid>{0D3E39F5-8526-4A99-9441-AF70BFFD2F05}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StarterGame2D</RootNamespace>
+    <RootNamespace>FreeTheMarket</RootNamespace>
     <AssemblyName>Game</AssemblyName>
     <XnaFrameworkVersion>v3.1</XnaFrameworkVersion>
     <XnaPlatform>Xbox 360</XnaPlatform>
     <ApplicationIcon>Game.ico</ApplicationIcon>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>StarterGame2D.Game</StartupObject>
+    <StartupObject>
+    </StartupObject>
     <Thumbnail>
     </Thumbnail>
     <XnaCrossPlatformGroupID>{88969f08-b6d0-461a-9efb-3696af767dcb}</XnaCrossPlatformGroupID>
