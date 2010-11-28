@@ -74,6 +74,7 @@
     <None Include="myschema.txschema" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\MovementComponent.cs" />
     <Compile Include="Game.cs">
       <Name>Game</Name>
     </Compile>
@@ -83,9 +84,6 @@
     <Compile Include="GUI\GuiPlay.cs" />
     <Compile Include="GUI\GuiSplashScreen.cs" />
     <Compile Include="GUI\GuiStartScreen.cs" />
-    <Compile Include="MovementComponent.cs">
-      <Name>MovementComponent</Name>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <Name>AssemblyInfo</Name>
     </Compile>
