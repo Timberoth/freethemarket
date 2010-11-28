@@ -30,26 +30,26 @@
                     <preload>true</preload>
                     <allowUnload>false</allowUnload>
                     <DynamicFieldCount>10</DynamicFieldCount>
-                    <DynamicFieldName0>forceCelled</DynamicFieldName0>
-                    <DynamicFieldValue0>0</DynamicFieldValue0>
-                    <DynamicFieldName1>additive</DynamicFieldName1>
-                    <DynamicFieldValue1>0</DynamicFieldValue1>
-                    <DynamicFieldName2>enableLighting</DynamicFieldName2>
+                    <DynamicFieldName0>refractiveAmount</DynamicFieldName0>
+                    <DynamicFieldValue0>1</DynamicFieldValue0>
+                    <DynamicFieldName1>specularPower</DynamicFieldName1>
+                    <DynamicFieldValue1>0.000</DynamicFieldValue1>
+                    <DynamicFieldName2>refractive</DynamicFieldName2>
                     <DynamicFieldValue2>0</DynamicFieldValue2>
-                    <DynamicFieldName3>specularIntensity</DynamicFieldName3>
-                    <DynamicFieldValue3>1.000</DynamicFieldValue3>
-                    <DynamicFieldName4>translucent</DynamicFieldName4>
-                    <DynamicFieldValue4>0</DynamicFieldValue4>
-                    <DynamicFieldName5>refractiveAmount</DynamicFieldName5>
-                    <DynamicFieldValue5>1</DynamicFieldValue5>
-                    <DynamicFieldName6>specularPower</DynamicFieldName6>
-                    <DynamicFieldValue6>0.000</DynamicFieldValue6>
-                    <DynamicFieldName7>refractive</DynamicFieldName7>
+                    <DynamicFieldName3>specularColor</DynamicFieldName3>
+                    <DynamicFieldValue3>1 1 1 1</DynamicFieldValue3>
+                    <DynamicFieldName4>normalMap</DynamicFieldName4>
+                    <DynamicFieldValue4>data/images/trident-normal-1.png</DynamicFieldValue4>
+                    <DynamicFieldName5>forceCelled</DynamicFieldName5>
+                    <DynamicFieldValue5>0</DynamicFieldValue5>
+                    <DynamicFieldName6>additive</DynamicFieldName6>
+                    <DynamicFieldValue6>0</DynamicFieldValue6>
+                    <DynamicFieldName7>enableLighting</DynamicFieldName7>
                     <DynamicFieldValue7>0</DynamicFieldValue7>
-                    <DynamicFieldName8>specularColor</DynamicFieldName8>
-                    <DynamicFieldValue8>1 1 1 1</DynamicFieldValue8>
-                    <DynamicFieldName9>normalMap</DynamicFieldName9>
-                    <DynamicFieldValue9>data/images/trident-normal-1.png</DynamicFieldValue9>
+                    <DynamicFieldName8>specularIntensity</DynamicFieldName8>
+                    <DynamicFieldValue8>1.000</DynamicFieldValue8>
+                    <DynamicFieldName9>translucent</DynamicFieldName9>
+                    <DynamicFieldValue9>0</DynamicFieldValue9>
                     <imageName>data/images/trident-d.png</imageName>
                 </t2dImageMapDatablock>
                 <t2dImageMapDatablock name="chronotrigger_crono_movement_sheetMaterial">
@@ -71,24 +71,24 @@
                     <preload>true</preload>
                     <allowUnload>false</allowUnload>
                     <DynamicFieldCount>9</DynamicFieldCount>
-                    <DynamicFieldName0>forceCelled</DynamicFieldName0>
+                    <DynamicFieldName0>refractiveAmount</DynamicFieldName0>
                     <DynamicFieldValue0>1</DynamicFieldValue0>
-                    <DynamicFieldName1>additive</DynamicFieldName1>
-                    <DynamicFieldValue1>0</DynamicFieldValue1>
-                    <DynamicFieldName2>enableLighting</DynamicFieldName2>
+                    <DynamicFieldName1>specularPower</DynamicFieldName1>
+                    <DynamicFieldValue1>0.000</DynamicFieldValue1>
+                    <DynamicFieldName2>refractive</DynamicFieldName2>
                     <DynamicFieldValue2>0</DynamicFieldValue2>
-                    <DynamicFieldName3>specularIntensity</DynamicFieldName3>
-                    <DynamicFieldValue3>1.000</DynamicFieldValue3>
-                    <DynamicFieldName4>translucent</DynamicFieldName4>
-                    <DynamicFieldValue4>0</DynamicFieldValue4>
-                    <DynamicFieldName5>refractiveAmount</DynamicFieldName5>
-                    <DynamicFieldValue5>1</DynamicFieldValue5>
-                    <DynamicFieldName6>specularPower</DynamicFieldName6>
-                    <DynamicFieldValue6>0.000</DynamicFieldValue6>
-                    <DynamicFieldName7>refractive</DynamicFieldName7>
-                    <DynamicFieldValue7>0</DynamicFieldValue7>
-                    <DynamicFieldName8>specularColor</DynamicFieldName8>
-                    <DynamicFieldValue8>1 1 1 1</DynamicFieldValue8>
+                    <DynamicFieldName3>specularColor</DynamicFieldName3>
+                    <DynamicFieldValue3>1 1 1 1</DynamicFieldValue3>
+                    <DynamicFieldName4>forceCelled</DynamicFieldName4>
+                    <DynamicFieldValue4>1</DynamicFieldValue4>
+                    <DynamicFieldName5>additive</DynamicFieldName5>
+                    <DynamicFieldValue5>0</DynamicFieldValue5>
+                    <DynamicFieldName6>enableLighting</DynamicFieldName6>
+                    <DynamicFieldValue6>0</DynamicFieldValue6>
+                    <DynamicFieldName7>specularIntensity</DynamicFieldName7>
+                    <DynamicFieldValue7>1.000</DynamicFieldValue7>
+                    <DynamicFieldName8>translucent</DynamicFieldName8>
+                    <DynamicFieldValue8>0</DynamicFieldValue8>
                     <imageName>data/images/chronotrigger_crono_movement_sheet.png</imageName>
                 </t2dImageMapDatablock>
                 <t2dAnimationDatablock name="Walk_Down">
@@ -150,24 +150,24 @@
                     <preload>true</preload>
                     <allowUnload>false</allowUnload>
                     <DynamicFieldCount>9</DynamicFieldCount>
-                    <DynamicFieldName0>forceCelled</DynamicFieldName0>
-                    <DynamicFieldValue0>0</DynamicFieldValue0>
-                    <DynamicFieldName1>additive</DynamicFieldName1>
-                    <DynamicFieldValue1>0</DynamicFieldValue1>
-                    <DynamicFieldName2>enableLighting</DynamicFieldName2>
+                    <DynamicFieldName0>refractiveAmount</DynamicFieldName0>
+                    <DynamicFieldValue0>1</DynamicFieldValue0>
+                    <DynamicFieldName1>specularPower</DynamicFieldName1>
+                    <DynamicFieldValue1>0.000</DynamicFieldValue1>
+                    <DynamicFieldName2>refractive</DynamicFieldName2>
                     <DynamicFieldValue2>0</DynamicFieldValue2>
-                    <DynamicFieldName3>specularIntensity</DynamicFieldName3>
-                    <DynamicFieldValue3>1.000</DynamicFieldValue3>
-                    <DynamicFieldName4>translucent</DynamicFieldName4>
+                    <DynamicFieldName3>specularColor</DynamicFieldName3>
+                    <DynamicFieldValue3>1 1 1 1</DynamicFieldValue3>
+                    <DynamicFieldName4>forceCelled</DynamicFieldName4>
                     <DynamicFieldValue4>0</DynamicFieldValue4>
-                    <DynamicFieldName5>refractiveAmount</DynamicFieldName5>
-                    <DynamicFieldValue5>1</DynamicFieldValue5>
-                    <DynamicFieldName6>specularPower</DynamicFieldName6>
-                    <DynamicFieldValue6>0.000</DynamicFieldValue6>
-                    <DynamicFieldName7>refractive</DynamicFieldName7>
-                    <DynamicFieldValue7>0</DynamicFieldValue7>
-                    <DynamicFieldName8>specularColor</DynamicFieldName8>
-                    <DynamicFieldValue8>1 1 1 1</DynamicFieldValue8>
+                    <DynamicFieldName5>additive</DynamicFieldName5>
+                    <DynamicFieldValue5>0</DynamicFieldValue5>
+                    <DynamicFieldName6>enableLighting</DynamicFieldName6>
+                    <DynamicFieldValue6>0</DynamicFieldValue6>
+                    <DynamicFieldName7>specularIntensity</DynamicFieldName7>
+                    <DynamicFieldValue7>1.000</DynamicFieldValue7>
+                    <DynamicFieldName8>translucent</DynamicFieldName8>
+                    <DynamicFieldValue8>0</DynamicFieldValue8>
                     <imageName>data/images/chronotrigger_crono_idle_sheet.png</imageName>
                 </t2dImageMapDatablock>
                 <t2dAnimationDatablock name="Idle_Down">

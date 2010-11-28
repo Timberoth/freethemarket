@@ -30,8 +30,8 @@
                 <Y>0</Y>
             </CenterPosition>
             <Extent>
-                <X>100.000</X>
-                <Y>75.000</Y>
+                <X>75.000</X>
+                <Y>56.250</Y>
             </Extent>
             <UseCameraWorldLimits>false</UseCameraWorldLimits>
         </Camera2D>
