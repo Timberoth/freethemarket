@@ -1,5 +1,12 @@
 //**btp_replace(namespace GarageGames.VCSTemplates.ItemTemplates,namespace FreeTheMarket.Components)
 //**btp_replace(class TestClass,public class InteractibleComponent)
+
+/***
+ * InteractibleComponent.cs
+ * Component that contains all the functionality to make a Torque2D object interactible.
+ * What the component actually does when interacted with is determined by the params passed in.
+ */
+
 using System;
 using System.Collections.Generic;
 using System.Text;
