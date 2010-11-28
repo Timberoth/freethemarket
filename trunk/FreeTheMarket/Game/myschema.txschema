@@ -1,5 +1,15 @@
 <TorqueSchema>
   <ExplicitTypes>
+    <Type name="DialogComponent" fullName="FreeTheMarket.Components.DialogComponent">
+      <IsComponent>true</IsComponent>
+      <Element name="Components">
+        <IsList>true</IsList>
+        <Type>GarageGames.Torque.Core.TorqueComponent</Type>
+      </Element>
+      <Element name="Name">
+        <Type>System.String</Type>
+      </Element>
+    </Type>
     <Type name="DirectionalLight" fullName="GarageGames.Torque.Lighting.DirectionalLight">
       <Element name="AmbientColor">
         <Type>Microsoft.Xna.Framework.Vector3</Type>
@@ -17,6 +27,16 @@
       </Element>
       <Element name="Direction">
         <Type>Microsoft.Xna.Framework.Vector3</Type>
+      </Element>
+    </Type>
+    <Type name="InteractibleComponent" fullName="FreeTheMarket.Components.InteractibleComponent">
+      <IsComponent>true</IsComponent>
+      <Element name="Components">
+        <IsList>true</IsList>
+        <Type>GarageGames.Torque.Core.TorqueComponent</Type>
+      </Element>
+      <Element name="Name">
+        <Type>System.String</Type>
       </Element>
     </Type>
     <Type name="LinkPoint" fullName="GarageGames.Torque.T2D.T2DLinkPointComponent+XmlLinkPoint">
@@ -1297,6 +1317,8 @@
     <Type name="TileLayerCollisionImage" fullName="GarageGames.Torque.T2D.T2DTileLayer+TileLayerCollisionImage" />
     <Type name="TorqueComponent" fullName="GarageGames.Torque.Core.TorqueComponent">
       <DerivedTypes>
+        <Type>FreeTheMarket.Components.DialogComponent</Type>
+        <Type>FreeTheMarket.Components.InteractibleComponent</Type>
         <Type>FreeTheMarket.MovementComponent</Type>
         <Type>GarageGames.Torque.Lighting.T2DLightComponent</Type>
         <Type>GarageGames.Torque.T2D.T2DAnimationComponent</Type>
