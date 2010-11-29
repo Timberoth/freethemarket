@@ -88,7 +88,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\DialogComponent.cs" />
     <Compile Include="Components\InteractibleComponent.cs" />
     <Compile Include="Components\MovementComponent.cs" />
     <Compile Include="Game.cs">

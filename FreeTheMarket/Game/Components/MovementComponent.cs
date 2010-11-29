@@ -97,11 +97,11 @@ namespace FreeTheMarket
         //======================================================
         #region Public Methods
         public void InterpolateTick(float k)
-        {
+        {            
         }
 
         public void ProcessTick(Move move, float elapsed)
-        {
+        {            
             if (move != null)
             {               
                 T2DAnimatedSprite currentAnim = _sceneObject as T2DAnimatedSprite;
@@ -234,13 +234,15 @@ namespace FreeTheMarket
 
             // retain a reference to this component's owner object
             _sceneObject = owner as T2DSceneObject;
-            _SetupInputMap(_sceneObject, _playerNumber, "gamepad" + _playerNumber, "keyboard");
+
+            // Don't register any input if the _playerNumber is not between 0 and 3
+            if (_playerNumber >= 0 && _playerNumber <= 3)
+            {
+                _SetupInputMap(_sceneObject, _playerNumber, "gamepad" + _playerNumber, "keyboard");
+            }
 
             // tell the process list to notifiy us with ProcessTick and InterpolateTick events
             ProcessList.Instance.AddTickCallback(Owner, this);
-
-            // Start with Down Idle Animation
-
 
             return true;
         }
