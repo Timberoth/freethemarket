@@ -5,6 +5,7 @@
  * InteractibleComponent.cs
  * Component that contains all the functionality to make a Torque2D object interactible.
  * What the component actually does when interacted with is determined by the params passed in.
+ * Possible interactions include talking, searching, opening, fighting, 
  */
 
 using System;
@@ -48,7 +49,35 @@ namespace FreeTheMarket.Components
 
         public virtual void ProcessTick(Move move, float dt)
         {
-            // todo: perform processing for component here
+            List<T2DSceneObject> sceneObjects = TorqueObjectDatabase.Instance.FindObjects<T2DSceneObject>();
+            for (int i = 0; i < sceneObjects.Count; ++i)
+            {
+                T2DSceneObject current = sceneObjects[i];
+
+                // Don't process anything if we're looking at our own pointer.
+                if (current == _sceneObject)
+                {
+                    continue;
+                }
+
+                InteractibleComponent component = current.Components.FindComponent<InteractibleComponent>();
+
+                // On proceed further if this sceneobject actually has the required component.
+                if (component != null)
+                {
+                    // See if we are close enough to interact with it.
+                    Vector2 distanceVector = current.Position - _sceneObject.Position;
+                    float INTERACT_DISTANCE = 3.0f;
+                    if (Math.Abs(distanceVector.Length()) < INTERACT_DISTANCE)
+                    {
+                        System.Console.WriteLine("Could Interact Now");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("");
+                    }
+                }
+            }
         }
 
         public virtual void InterpolateTick(float k)
@@ -71,11 +100,11 @@ namespace FreeTheMarket.Components
             if (!base._OnRegister(owner) || !(owner is T2DSceneObject))
                 return false;
 
-            // todo: perform initialization for the component
-
-            // todo: look up interfaces exposed by other components
-            // E.g., 
-            // _theirInterface = Owner.Components.GetInterface<ValueInterface<float>>("float", "their interface name");            
+            // retain a reference to this component's owner object
+            _sceneObject = owner as T2DSceneObject;
+            
+            // tell the process list to notifiy us with ProcessTick and InterpolateTick events
+            ProcessList.Instance.AddTickCallback(Owner, this);
 
             return true;
         }
@@ -101,6 +130,10 @@ namespace FreeTheMarket.Components
 
         //======================================================
         #region Private, protected, internal fields
+        
+        // Keep pointer to scene object
+        T2DSceneObject _sceneObject;
+        
         #endregion
     }
 }
