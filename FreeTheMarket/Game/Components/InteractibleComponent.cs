@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 using GarageGames.Torque.Core;
 using GarageGames.Torque.Util;
@@ -20,6 +21,7 @@ using GarageGames.Torque.Sim;
 using GarageGames.Torque.T2D;
 using GarageGames.Torque.SceneGraph;
 using GarageGames.Torque.MathUtil;
+using GarageGames.Torque.Platform;
 
 namespace FreeTheMarket.Components
 {
@@ -36,6 +38,12 @@ namespace FreeTheMarket.Components
 
         //======================================================
         #region Public properties, operators, constants, and enums
+        
+        public int PlayerNumber
+        {
+            get { return _playerNumber; }
+            set { _playerNumber = value; }
+        }       
 
         public T2DSceneObject SceneObject
         {
@@ -49,6 +57,10 @@ namespace FreeTheMarket.Components
 
         public virtual void ProcessTick(Move move, float dt)
         {
+            // Need valid move to proceed
+            if (move == null)
+                return;
+
             List<T2DSceneObject> sceneObjects = TorqueObjectDatabase.Instance.FindObjects<T2DSceneObject>();
             for (int i = 0; i < sceneObjects.Count; ++i)
             {
@@ -69,13 +81,13 @@ namespace FreeTheMarket.Components
                     Vector2 distanceVector = current.Position - _sceneObject.Position;
                     float INTERACT_DISTANCE = 3.0f;
                     if (Math.Abs(distanceVector.Length()) < INTERACT_DISTANCE)
-                    {
-                        System.Console.WriteLine("Could Interact Now");
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("");
-                    }
+                    {                        
+                        // Only interact when in range and the Interact button is pressed.
+                        if ( move.Buttons.Count > 0 && move.Buttons[0].Pushed )
+                        {
+                            System.Console.WriteLine("Could Interact Now");
+                        }
+                    }                    
                 }
             }
         }
@@ -102,6 +114,12 @@ namespace FreeTheMarket.Components
 
             // retain a reference to this component's owner object
             _sceneObject = owner as T2DSceneObject;
+
+            // Don't register any input if the _playerNumber is not between 0 and 3
+            if (_playerNumber >= 0 && _playerNumber <= 3)
+            {
+                _SetupInputMap(_sceneObject, _playerNumber, "gamepad" + _playerNumber, "keyboard");
+            }
             
             // tell the process list to notifiy us with ProcessTick and InterpolateTick events
             ProcessList.Instance.AddTickCallback(Owner, this);
@@ -125,6 +143,30 @@ namespace FreeTheMarket.Components
             // Owner.RegisterCachedInterface("float", "interface name", this, _ourInterface);
         }
 
+        private void _SetupInputMap(TorqueObject player, int playerIndex, String gamePad, String keyboard)
+        {
+            // Set player as the controllable object
+            PlayerManager.Instance.GetPlayer(playerIndex).ControlObject = player;
+
+            // Get input map for this player and configure it
+            InputMap inputMap = PlayerManager.Instance.GetPlayer(playerIndex).InputMap;
+
+            int gamepadId = InputManager.Instance.FindDevice(gamePad);
+            if (gamepadId >= 0)
+            {
+                // A button for interactions
+                inputMap.BindMove(gamepadId, (int)XGamePadDevice.GamePadObjects.A, MoveMapTypes.Button, 0);                
+            }
+
+            // keyboard controls
+            int keyboardId = InputManager.Instance.FindDevice(keyboard);
+            if (keyboardId >= 0)
+            {
+                // Space for interactions
+                inputMap.BindMove(keyboardId, (int)Keys.Space, MoveMapTypes.Button, 0);                
+            }
+        }
+
 
         #endregion
 
@@ -133,6 +175,9 @@ namespace FreeTheMarket.Components
         
         // Keep pointer to scene object
         T2DSceneObject _sceneObject;
+
+        // Track player controlling this object, if any
+        int _playerNumber = -1;
         
         #endregion
     }
