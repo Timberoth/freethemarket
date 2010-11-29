@@ -296,7 +296,7 @@ namespace FreeTheMarket
         T2DSceneObject _sceneObject;
         
         // Track player controlling this object
-        int _playerNumber = 0;
+        int _playerNumber = -1;
         
         // Animations to play when facing or moving a certain direction Up, Down, Left or Right
         T2DAnimationData _idleUp;

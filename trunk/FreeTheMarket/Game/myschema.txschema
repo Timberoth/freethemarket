@@ -21,6 +21,9 @@
     </Type>
     <Type name="InteractibleComponent" fullName="FreeTheMarket.Components.InteractibleComponent">
       <IsComponent>true</IsComponent>
+      <Element name="PlayerNumber">
+        <Type>System.Int32</Type>
+      </Element>
       <Element name="Components">
         <IsList>true</IsList>
         <Type>GarageGames.Torque.Core.TorqueComponent</Type>
