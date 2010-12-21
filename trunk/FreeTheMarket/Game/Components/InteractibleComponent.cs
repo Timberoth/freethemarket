@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Timers;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -84,12 +85,32 @@ namespace FreeTheMarket.Components
                     {                        
                         // Only interact when in range and the Interact button is pressed.
                         if ( move.Buttons.Count > 0 && move.Buttons[0].Pushed )
-                        {
-                            System.Console.WriteLine("Could Interact Now");
+                        {                            
+                            if (!_interactionActive)
+                            {
+                                System.Console.WriteLine("Start Interaction");
+
+                                // DO SOMETHING HERE, the function called here must be able to be called
+                                // mutliple times without breaking anything.
+                                // InteractionFunction();
+
+                                _interactionActive = true;
+
+                                // Set a timer so the interact call isn't called a bunch of times.
+                                Timer timer = new Timer();
+                                timer.Elapsed += new ElapsedEventHandler(FinishInteraction);
+                                timer.Interval = 1750;
+                                timer.Start();
+                            }
                         }
                     }                    
                 }
             }
+        }
+
+        private void FinishInteraction(object source, ElapsedEventArgs args)
+        {
+            _interactionActive = false;
         }
 
         public virtual void InterpolateTick(float k)
@@ -178,6 +199,9 @@ namespace FreeTheMarket.Components
 
         // Track player controlling this object, if any
         int _playerNumber = -1;
+
+        // Make sure interaction isn't hit multiple times
+        bool _interactionActive = false;
         
         #endregion
     }

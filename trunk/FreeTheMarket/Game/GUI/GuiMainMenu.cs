@@ -159,7 +159,7 @@ namespace FreeTheMarket
             GuiPlay playGUI = new GuiPlay();
             GUICanvas.Instance.SetContentControl(playGUI);
             
-            Game.Instance.SceneLoader.Load(@"data\levels\Gameplay.txscene");            
+            Game.Instance.SceneLoader.Load(@"data\levels\Gameplay.txscene");
         }
 
 
