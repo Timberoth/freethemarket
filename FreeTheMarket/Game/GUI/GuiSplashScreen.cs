@@ -42,7 +42,7 @@ namespace FreeTheMarket
             // set some info for this control
             Name = "GuiSplashScreen";
             Style = splashStyle;
-            OnFadeFinished = OnSplashFinished;
+            OnFadeFinished = OnSplashFinished;           
         }
 
 

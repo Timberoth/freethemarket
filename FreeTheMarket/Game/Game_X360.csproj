@@ -79,6 +79,7 @@
     <Compile Include="Game.cs">
       <Name>Game</Name>
     </Compile>
+    <Compile Include="GUI\DialogWindow.cs" />
     <Compile Include="GUI\GuiCreditsScreen.cs" />
     <Compile Include="GUI\GuiHelpScreen.cs" />
     <Compile Include="GUI\GuiMainMenu.cs" />

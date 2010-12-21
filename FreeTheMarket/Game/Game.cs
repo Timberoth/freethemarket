@@ -43,7 +43,7 @@ namespace FreeTheMarket
         {
             // Create the static game instance.  
             _myGame = new Game();
-
+            
             // begin the game.  Further setup is done in BeginRun()
             _myGame.Run();
         }
@@ -79,7 +79,7 @@ namespace FreeTheMarket
 
             //start by showing the GarageGames splash screen
             GuiSplashScreen splashScreen = new GuiSplashScreen(@"data\images\splashStudio");
-            GUICanvas.Instance.SetContentControl(splashScreen);
+            GUICanvas.Instance.SetContentControl(splashScreen);            
         }
         #endregion
 
