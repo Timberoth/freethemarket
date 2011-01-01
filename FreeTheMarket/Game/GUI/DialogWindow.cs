@@ -13,7 +13,9 @@ namespace FreeTheMarket
 {
     public class DialogWindow
     {                
-        float[] FIRST_LINE_OFFSET = {15.0f, 10.0f};
+        float[,] GUI_LINE_OFFSETS = new float[3,2]{ {15.0f, 10.0f},
+                                       {15.0f, 32.0f},
+                                       {15.0f, 54.0f} };
 
         // Dictionary of all English characters and their pixel widths.  This gets filled
         // as new text comes in.
@@ -30,10 +32,12 @@ namespace FreeTheMarket
         // TorqueX stuff
         GUITextStyle dialogWindowTextStyle;
         GUIBitmapStyle dialogBitmapStyle;
-        GUIText _guiText;        
         GUIBitmap _windowBitmap;
         GUIControl _parentGUIControl;
 
+        // Torque GUIText lines
+        GUIText[] _guiTexts;
+        
         public DialogWindow( GUIControl parentGUIControl, String text, float x, float y, float width, float height )
         {
             // Can't do anything without a GUIControl to add this dialog to.
@@ -70,24 +74,32 @@ namespace FreeTheMarket
             dialogWindowTextStyle.PreserveAspectRatio = true;            
 
             // Create all the GUI text lines.
-            _guiText = new GUIText();
-            _guiText.Style = dialogWindowTextStyle;
-            // The text needs to be inside the dialog window so the position should
-            // be offset from the dialog window's position.
-            _guiText.Position = new Vector2( _x+FIRST_LINE_OFFSET[0], _y+FIRST_LINE_OFFSET[1]);
-            _guiText.Visible = true;
-            _guiText.Folder = parentGUIControl;
-            //_guiText.Text = _text;
-            //_guiText.Text = "wwwwwwwwwWwwwwwwwwwWwwwwwwwwwWwwwwwwwwwWwwwwwwwwwW";                       
-            _guiText.Text = "Here's a test string of characters that should be long enough to roll on the second line of the dialog window and maybe even a third line.";
+            _guiTexts = new GUIText[3];
 
-            BreakTextIntoLines(_guiText.Text, _width, _height);
+            //String testText = "Here's a test string of characters that should be long enough to roll on the second line of the dialog window and maybe even a third line.";
+            String testText = "Let's see how the dialog window handles this longer piece of text with different spacing.  It looks like this string has been broken up into multiple lines, but the question is how many?";
+            
+            // Something is off with the calcuations because the 60.0 doesn't make logical sense.
+            BreakTextIntoLines(testText, _width-60.0f, _height);
+
+            // This has to be modified to work with text that spans multiple lines.
+            for (int i = 0; i < 3; ++i)
+           {
+                _guiTexts[i] = new GUIText();
+                _guiTexts[i].Style = dialogWindowTextStyle;
+                // The text needs to be inside the dialog window so the position should
+                // be offset from the dialog window's position.
+                _guiTexts[i].Position = new Vector2(_x + GUI_LINE_OFFSETS[i,0], _y + GUI_LINE_OFFSETS[i,1]);
+                _guiTexts[i].Visible = true;
+                _guiTexts[i].Folder = parentGUIControl;
+                _guiTexts[i].Text = _textLines.Dequeue();
+            }    
         }
 
         private void BreakTextIntoLines(String text, float boxWidth, float boxHeight)
         {
-            // Total pixel length
-            float totalPixelLength = 0.0f;
+            // String Pixel length
+            float stringPixelLength = 0.0f;
 
             // Create dummy GUIText to calculate character widths.
             GUIText dummyText = new GUIText();
@@ -96,41 +108,62 @@ namespace FreeTheMarket
             dummyText.Folder = _parentGUIControl;
             dummyText.Text = "A";
             float charHeight = dummyText.Size.Y;
-            
-            // Go through each character and keep track of character width if not already stored.
-            for (int i = 0; i < text.Length; i++)
+
+            // Keep track of the last space encountered so it can
+            // be used as a line break index.
+            int lastSpaceIndex = 0;
+
+            int i = 0;
+            bool doneProcessingString = false;
+            while ( !doneProcessingString )
             {
+                // Check if the string is done processing.
+                if (i >= text.Length)
+                {
+                    // The remain text is the last line.
+                    _textLines.Enqueue(text);
+
+                    doneProcessingString = true;
+
+                    break;
+                }
+
                 // Check if the character is already in the dictionary
                 Char character = text[i];
                 if (charWidths.ContainsKey(character))
                 {
-                    totalPixelLength += charWidths[character];
+                    stringPixelLength += charWidths[character];
+                    
                 }
                 else
                 {
                     // Calculate the width and add it to the dictionary
                     dummyText.Text = character.ToString();
                     charWidths.Add(character, dummyText.Size.X);
-                    totalPixelLength += dummyText.Size.X;
+                    stringPixelLength += charWidths[character];
+       
                 }
-            }
 
-            // Based on the total pixel length and the length of the dialog box, calculate
-            // how many lines would be required.
-            int numLines = (int)Math.Ceiling(totalPixelLength / boxWidth);
+                // Track last encountered space
+                if (character == ' ')
+                {
+                    lastSpaceIndex = i;
+                }
 
-            // Based on this rough estimate, figure out how to break string into lines.
-            
-            // If there is only one line, that's all you have to do.
-            if (numLines == 1)
-            {
-                _textLines.Enqueue(text);
-            }
+                // Figure out if the string needs to be split into it's own line.
+                if ( stringPixelLength >= boxWidth )
+                {
+                    String completeLine = text.Substring(0, lastSpaceIndex);
+                    text = text.Substring(lastSpaceIndex+1);
+                    lastSpaceIndex = 0;
+                    stringPixelLength = 0.0f;
+                    i = -1;
 
-            // If there are more lines, we have to figure out exactly where to break the string.
-            else
-            {
-                // TODO
+                    _textLines.Enqueue(completeLine);
+                }
+
+                // Increment counter
+                ++i;
             }
         }
     }   
