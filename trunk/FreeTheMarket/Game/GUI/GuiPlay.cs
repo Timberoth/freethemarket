@@ -22,7 +22,9 @@ namespace FreeTheMarket
             Size = new Vector2(1280, 720);
             Folder = GUICanvas.Instance;
 
-            _testDialogWindow = new DialogWindow(this, "First Line that is really long and should be broken up and go onto a second line.", 0.0f, 300.0f, 520.0f, 120.0f);
+            _testDialogWindow = new DialogWindow(this, 
+                "Let's see how the dialog window handles this longer piece of text with different spacing.  It looks like this string has been broken up into multiple lines, but the question is how many?  Here is more text that should be put onto another screen.  Here's more text that will continue to roll onto another screen or two after it reaches the end of the window and rolls over.",
+                0.0f, 300.0f, 520.0f, 120.0f);
         }
 
 
