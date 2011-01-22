@@ -83,12 +83,9 @@ namespace FreeTheMarket
 
             // Create all the GUI text lines.
             _guiTexts = new GUIText[NUM_LINES];
-
-            //String testText = "Here's a test string of characters that should be long enough to roll on the second line of the dialog window and maybe even a third line.";
-            String testText = "Let's see how the dialog window handles this longer piece of text with different spacing.  It looks like this string has been broken up into multiple lines, but the question is how many?  Here is more text that should be put onto another screen.  Here's more text that will continue to roll onto another screen or two after it reaches the end of the window and rolls over.";
             
             // Something is off with the calcuations because the 60.0 doesn't make logical sense.
-            BreakTextIntoLines(testText, _width-60.0f, _height);
+            BreakTextIntoLines(text, _width-60.0f, _height);
 
             // This has to be modified to work with text that spans multiple lines.
             string line = "";
