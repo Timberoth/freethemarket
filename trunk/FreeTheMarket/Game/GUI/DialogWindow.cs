@@ -7,19 +7,23 @@ using GarageGames.Torque.GUI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
+// TODO NEED TO REMOVE
+//using System.Timers;
 
 namespace FreeTheMarket
 {
     public class DialogWindow
-    {                
-        float[,] GUI_LINE_OFFSETS = new float[3,2]{ {15.0f, 10.0f},
+    {
+        int NUM_LINES = 4;
+
+        float[,] GUI_LINE_OFFSETS = new float[4,2]{ {15.0f, 10.0f},
                                        {15.0f, 32.0f},
-                                       {15.0f, 54.0f} };
+                                       {15.0f, 54.0f},
+                                       {15.0f, 76.0f}};
 
         // Dictionary of all English characters and their pixel widths.  This gets filled
         // as new text comes in.
-        Dictionary<Char, float> charWidths;
+        Dictionary<Char, float> _charWidths;
         
         // Normal stuff
         String _text;
@@ -30,20 +34,24 @@ namespace FreeTheMarket
         Queue<String> _textLines;
 
         // TorqueX stuff
-        GUITextStyle dialogWindowTextStyle;
-        GUIBitmapStyle dialogBitmapStyle;
+        GUITextStyle _dialogWindowTextStyle;
+        GUIBitmapStyle _dialogBitmapStyle;
         GUIBitmap _windowBitmap;
         GUIControl _parentGUIControl;
 
         // Torque GUIText lines
         GUIText[] _guiTexts;
-        
+
+        // TODO NEED TO REMOVE
+        //System.Timers.Timer aTimer;
+
+        // Constructor
         public DialogWindow( GUIControl parentGUIControl, String text, float x, float y, float width, float height )
         {
             // Can't do anything without a GUIControl to add this dialog to.
             Debug.Assert(parentGUIControl != null, "DialogWindows must be added to an existing GUIControl.");
 
-            charWidths = new Dictionary<Char, float>();
+            _charWidths = new Dictionary<Char, float>();
 
             _parentGUIControl = parentGUIControl;
             _x = x;
@@ -53,11 +61,11 @@ namespace FreeTheMarket
             _text = text;
             _textLines = new Queue<string>();
 
-            dialogBitmapStyle = new GUIBitmapStyle();
-            dialogBitmapStyle.SizeToBitmap = false;
+            _dialogBitmapStyle = new GUIBitmapStyle();
+            _dialogBitmapStyle.SizeToBitmap = false;
 
             _windowBitmap = new GUIBitmap();
-            _windowBitmap.Style = dialogBitmapStyle;
+            _windowBitmap.Style = _dialogBitmapStyle;
             _windowBitmap.Size = new Vector2(_width, _height);
             _windowBitmap.Bitmap = @"data\images\dialog_window";
             _windowBitmap.Folder = parentGUIControl;
@@ -66,36 +74,111 @@ namespace FreeTheMarket
 
 
             // Create the text style for all the text.
-            dialogWindowTextStyle = new GUITextStyle();
-            dialogWindowTextStyle.FontType = "Arial14"; // @"data\images\MyFont";
-            dialogWindowTextStyle.TextColor[0] = Color.White;
-            dialogWindowTextStyle.SizeToText = true;
-            dialogWindowTextStyle.Alignment = TextAlignment.JustifyLeft;
-            dialogWindowTextStyle.PreserveAspectRatio = true;            
+            _dialogWindowTextStyle = new GUITextStyle();
+            _dialogWindowTextStyle.FontType = "Arial14"; // @"data\images\MyFont";
+            _dialogWindowTextStyle.TextColor[0] = Color.White;
+            _dialogWindowTextStyle.SizeToText = true;
+            _dialogWindowTextStyle.Alignment = TextAlignment.JustifyLeft;
+            _dialogWindowTextStyle.PreserveAspectRatio = true;            
 
             // Create all the GUI text lines.
-            _guiTexts = new GUIText[3];
+            _guiTexts = new GUIText[NUM_LINES];
 
             //String testText = "Here's a test string of characters that should be long enough to roll on the second line of the dialog window and maybe even a third line.";
-            String testText = "Let's see how the dialog window handles this longer piece of text with different spacing.  It looks like this string has been broken up into multiple lines, but the question is how many?";
+            String testText = "Let's see how the dialog window handles this longer piece of text with different spacing.  It looks like this string has been broken up into multiple lines, but the question is how many?  Here is more text that should be put onto another screen.  Here's more text that will continue to roll onto another screen or two after it reaches the end of the window and rolls over.";
             
             // Something is off with the calcuations because the 60.0 doesn't make logical sense.
             BreakTextIntoLines(testText, _width-60.0f, _height);
 
             // This has to be modified to work with text that spans multiple lines.
-            for (int i = 0; i < 3; ++i)
-           {
+            string line = "";
+            for (int i = 0; i < NUM_LINES; ++i)
+            {                
                 _guiTexts[i] = new GUIText();
-                _guiTexts[i].Style = dialogWindowTextStyle;
+                _guiTexts[i].Style = _dialogWindowTextStyle;
                 // The text needs to be inside the dialog window so the position should
                 // be offset from the dialog window's position.
                 _guiTexts[i].Position = new Vector2(_x + GUI_LINE_OFFSETS[i,0], _y + GUI_LINE_OFFSETS[i,1]);
                 _guiTexts[i].Visible = true;
                 _guiTexts[i].Folder = parentGUIControl;
-                _guiTexts[i].Text = _textLines.Dequeue();
-            }    
+
+                line = "";
+                if (_textLines.Count > 0)
+                    line = _textLines.Dequeue();
+
+                _guiTexts[i].Text = line;
+            }
+
+            /*
+            // TODO NEED TO REMOVE
+            aTimer = new System.Timers.Timer();
+
+            // Hook up the Elapsed event for the timer.
+            aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+
+            // Set the Interval to 2 seconds (2000 milliseconds).
+            aTimer.Interval = 4000;
+            aTimer.Enabled = true;
+            aTimer.AutoReset = true;
+             */
         }
 
+        public void ShowWindow()
+        {
+            _windowBitmap.Visible = true;
+            for (int i = 0; i < NUM_LINES; ++i)
+            {               
+                _guiTexts[i].Visible = true;                
+            }
+        }
+
+        public void HideWindow()
+        {
+            _windowBitmap.Visible = false;
+            for (int i = 0; i < NUM_LINES; ++i)
+            {
+                _guiTexts[i].Visible = false;
+            }
+        }
+
+        /*
+        // TODO NEED TO REMOVE
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            if (_textLines.Count <= 0)
+                aTimer.Stop();
+                
+            AdvanceText();            
+        }
+         */
+
+        // Load up the next 4 lines of text if tere is any or close the window if the dialog is done.
+        public void AdvanceText()
+        {
+            if (_textLines.Count <= 0)
+            {
+                // Hide the window
+                HideWindow();
+                return;
+            }
+
+            string line = "";
+            for (int i = 0; i < NUM_LINES; ++i)
+            {                
+                // The text needs to be inside the dialog window so the position should
+                // be offset from the dialog window's position.
+                _guiTexts[i].Position = new Vector2(_x + GUI_LINE_OFFSETS[i, 0], _y + GUI_LINE_OFFSETS[i, 1]);                
+
+                line = "";
+                if (_textLines.Count > 0)
+                    line = _textLines.Dequeue();
+
+                _guiTexts[i].Text = line;
+            }
+        }
+
+
+        // Take the complete string and break it into multiple lines which can be advanced through.
         private void BreakTextIntoLines(String text, float boxWidth, float boxHeight)
         {
             // String Pixel length
@@ -103,7 +186,7 @@ namespace FreeTheMarket
 
             // Create dummy GUIText to calculate character widths.
             GUIText dummyText = new GUIText();
-            dummyText.Style = dialogWindowTextStyle;
+            dummyText.Style = _dialogWindowTextStyle;
             dummyText.Visible = false;
             dummyText.Folder = _parentGUIControl;
             dummyText.Text = "A";
@@ -130,17 +213,17 @@ namespace FreeTheMarket
 
                 // Check if the character is already in the dictionary
                 Char character = text[i];
-                if (charWidths.ContainsKey(character))
+                if (_charWidths.ContainsKey(character))
                 {
-                    stringPixelLength += charWidths[character];
+                    stringPixelLength += _charWidths[character];
                     
                 }
                 else
                 {
                     // Calculate the width and add it to the dictionary
                     dummyText.Text = character.ToString();
-                    charWidths.Add(character, dummyText.Size.X);
-                    stringPixelLength += charWidths[character];
+                    _charWidths.Add(character, dummyText.Size.X);
+                    stringPixelLength += _charWidths[character];
        
                 }
 
