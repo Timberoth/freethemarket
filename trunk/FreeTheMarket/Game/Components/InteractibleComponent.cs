@@ -11,7 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Timers;
+using System.Threading;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -58,6 +58,18 @@ namespace FreeTheMarket.Components
 
         public virtual void ProcessTick(Move move, float dt)
         {
+            // Check if the interaction timer is over
+            if (_interactionActive)
+            {
+                _interactionTimer -= dt;
+
+                if (_interactionTimer <= 0.0f)
+                {
+                    _interactionActive = false;
+                    _interactionTimer = 0.0f;
+                }
+            }
+
             // Need valid move to proceed
             if (move == null)
                 return;
@@ -94,24 +106,19 @@ namespace FreeTheMarket.Components
                                 // mutliple times without breaking anything.
                                 // InteractionFunction();
 
+                                // Mark that the interaction has started so we can freeze it for a 
+                                // small amount of time before it can be fired again.
                                 _interactionActive = true;
 
-                                // Set a timer so the interact call isn't called a bunch of times.
-                                Timer timer = new Timer();
-                                timer.Elapsed += new ElapsedEventHandler(FinishInteraction);
-                                timer.Interval = 1750;
-                                timer.Start();
+                               // Set the timer to release the interaction after a certain amount of time.
+                                _interactionTimer = 0.25f;
                             }
                         }
                     }                    
                 }
             }
         }
-
-        private void FinishInteraction(object source, ElapsedEventArgs args)
-        {
-            _interactionActive = false;
-        }
+      
 
         public virtual void InterpolateTick(float k)
         {
@@ -202,6 +209,9 @@ namespace FreeTheMarket.Components
 
         // Make sure interaction isn't hit multiple times
         bool _interactionActive = false;
+
+        // Keep track of how long the interaction should be frozen.
+        float _interactionTimer = 0.0f;
         
         #endregion
     }
