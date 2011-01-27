@@ -5,6 +5,7 @@ using System.Text;
 
 using GarageGames.Torque.GUI;
 using GarageGames.Torque.T2D;
+using GarageGames.Torque.Core;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,6 +18,7 @@ namespace FreeTheMarket
     public class GuiPlay : GUISceneview, IGUIScreen
     {        
         DialogWindow _testDialogWindow;
+        Vector2 _tempPosition;
 
         public GuiPlay()
         {
@@ -38,11 +40,13 @@ namespace FreeTheMarket
             base.OnRender(offset, updateRect);
 
             T2DSceneCamera camera = (T2DSceneCamera)this.Camera;
-            if (camera != null)
+            T2DSceneObject player = (T2DSceneObject)TorqueObjectDatabase.Instance.FindObject("Player");
+            if( camera != null && player != null )
             {
-                camera.AnimatePosition(new Vector2(25.0f, 25.0f), 2000.0f, GarageGames.Torque.Util.InterpolationMode.Linear);
-            }
+                _tempPosition = player.Position;
+                _tempPosition.Y = camera.CenterPosition.Y;
+                camera.CenterPosition = _tempPosition;
+            }                      
         }
-
     }
 }
