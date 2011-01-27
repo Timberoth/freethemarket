@@ -164,7 +164,9 @@ namespace FreeTheMarket
 
                 // Keep track of previous frame velocity to determine which animation to play
                 _prevVelocity.X = _sceneObject.Physics.VelocityX;
-                _prevVelocity.Y = _sceneObject.Physics.VelocityY;                
+                _prevVelocity.Y = _sceneObject.Physics.VelocityY;
+                
+                //T2DSceneCamera cam = T2DSceneGraph.Camera as T2DSceneCamera;                
             }
         }
 
