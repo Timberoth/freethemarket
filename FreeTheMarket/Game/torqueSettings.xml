@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <TorqueEngineSettings>
-  <SimulateFences>true</SimulateFences>
+  <SimulateFences>false</SimulateFences>
 	<UseFixedTimeStep>false</UseFixedTimeStep>
 	<UseInterpolation>false</UseInterpolation>
 	<EnableAudio>false</EnableAudio>
