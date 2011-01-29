@@ -44,7 +44,36 @@ namespace FreeTheMarket.Components
         {
             get { return _playerNumber; }
             set { _playerNumber = value; }
-        }       
+        }
+
+        [TorqueXmlSchemaType(DefaultValue = "10")]
+        public float InteractionDistance
+        {
+            get { return _interactionDistance; }
+            set { _interactionDistance = value; }
+        }
+
+        [TorqueXmlSchemaType(DefaultValue = "Space")]
+        public Keys InteractionKey
+        {
+            get { return _kbControlInteraction; }
+            set { _kbControlInteraction = value; }
+        }
+
+        // Define delegate method
+        public delegate void OnInteractionDelegate(T2DSceneObject ourObject);
+
+        public OnInteractionDelegate InteractionDelegate
+        {
+            get { return _onInteraction; }
+            set { _onInteraction = value; }
+        }
+
+        // Define function to be used as delegated
+        public static OnInteractionDelegate DestroyDelegate
+        {
+            get { return DestroyInteraction; }
+        }
 
         public T2DSceneObject SceneObject
         {
@@ -92,7 +121,7 @@ namespace FreeTheMarket.Components
                 {
                     // See if we are close enough to interact with it.
                     Vector2 distanceVector = current.Position - _sceneObject.Position;
-                    float INTERACT_DISTANCE = 3.0f;
+                    float INTERACT_DISTANCE = 10.0f;
                     if (Math.Abs(distanceVector.Length()) < INTERACT_DISTANCE)
                     {                        
                         // Only interact when in range and the Interact button is pressed.
@@ -119,7 +148,6 @@ namespace FreeTheMarket.Components
             }
         }
       
-
         public virtual void InterpolateTick(float k)
         {
             // todo: interpolate between ticks as needed here
@@ -128,6 +156,13 @@ namespace FreeTheMarket.Components
         public override void CopyTo(TorqueComponent obj)
         {
             base.CopyTo(obj);
+
+            // TODO copy all private fields
+        }
+
+        public static void DestroyInteraction(T2DSceneObject ourObject)
+        {
+            ourObject.MarkForDelete = true;
         }
 
         #endregion
@@ -193,6 +228,8 @@ namespace FreeTheMarket.Components
                 // Space for interactions
                 inputMap.BindMove(keyboardId, (int)Keys.Space, MoveMapTypes.Button, 0);                
             }
+
+            ProcessList.Instance.AddTickCallback(Owner, this);
         }
 
 
@@ -212,6 +249,15 @@ namespace FreeTheMarket.Components
 
         // Keep track of how long the interaction should be frozen.
         float _interactionTimer = 0.0f;
+
+        // Distance for interaction
+        float _interactionDistance;
+
+        // Key to listen to
+        Keys _kbControlInteraction;
+
+        // Delegate method after interaction
+        OnInteractionDelegate _onInteraction;
         
         #endregion
     }

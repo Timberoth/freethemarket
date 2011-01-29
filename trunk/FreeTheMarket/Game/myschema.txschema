@@ -24,6 +24,39 @@
       <Element name="PlayerNumber">
         <Type>System.Int32</Type>
       </Element>
+      <Element name="InteractionDistance">
+        <Type>System.Single</Type>
+        <DefaultValue>10</DefaultValue>
+      </Element>
+      <Element name="InteractionKey">
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+        <DefaultValue>Space</DefaultValue>
+      </Element>
+      <Element name="InteractionDelegate">
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
+      </Element>
+      <Element name="Components">
+        <IsList>true</IsList>
+        <Type>GarageGames.Torque.Core.TorqueComponent</Type>
+      </Element>
+      <Element name="Name">
+        <Type>System.String</Type>
+      </Element>
+      <Element name="DestroyDelegate">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
+      </Element>
+    </Type>
+    <Type name="InteractorComponent" fullName="FreeTheMarket.Components.InteractorComponent">
+      <IsComponent>true</IsComponent>
+      <Element name="Player">
+        <Type>System.Int32</Type>
+        <DefaultValue>0</DefaultValue>
+      </Element>
+      <Element name="Interaction">
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+        <DefaultValue>Space</DefaultValue>
+      </Element>
       <Element name="Components">
         <IsList>true</IsList>
         <Type>GarageGames.Torque.Core.TorqueComponent</Type>
@@ -780,6 +813,649 @@
         <Type>System.Int32</Type>
       </Element>
     </Type>
+    <Type name="Keys" fullName="Microsoft.Xna.Framework.Input.Keys">
+      <IsEnum>true</IsEnum>
+      <Element name="A">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Add">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Apps">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Attn">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="B">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Back">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="BrowserBack">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="BrowserFavorites">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="BrowserForward">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="BrowserHome">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="BrowserRefresh">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="BrowserSearch">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="BrowserStop">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="C">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="CapsLock">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Crsel">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D0">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D1">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D2">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D3">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D4">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D5">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D6">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D7">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D8">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="D9">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Decimal">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Delete">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Divide">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Down">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="E">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="End">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Enter">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="EraseEof">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Escape">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Execute">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Exsel">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F1">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F10">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F11">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F12">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F13">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F14">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F15">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F16">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F17">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F18">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F19">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F2">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F20">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F21">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F22">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F23">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F24">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F3">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F4">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F5">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F6">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F7">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F8">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="F9">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="G">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="H">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Help">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Home">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="I">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="ImeConvert">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="ImeNoConvert">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Insert">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="J">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="K">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Kana">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Kanji">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="L">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="LaunchApplication1">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="LaunchApplication2">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="LaunchMail">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="LeftControl">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Left">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="LeftAlt">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="LeftShift">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="LeftWindows">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="M">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="MediaNextTrack">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="MediaPlayPause">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="MediaPreviousTrack">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="MediaStop">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Multiply">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="N">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="None">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumLock">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad0">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad1">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad2">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad3">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad4">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad5">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad6">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad7">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad8">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="NumPad9">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="O">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemAuto">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemCopy">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemEnlW">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemSemicolon">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemBackslash">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemQuestion">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemTilde">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemOpenBrackets">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemPipe">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemCloseBrackets">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemQuotes">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Oem8">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemClear">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemComma">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemMinus">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemPeriod">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="OemPlus">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="P">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Pa1">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="PageDown">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="PageUp">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Pause">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Play">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Print">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="PrintScreen">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="ProcessKey">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Q">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="R">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="RightControl">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Right">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="RightAlt">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="RightShift">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="RightWindows">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="S">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Scroll">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Select">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="SelectMedia">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Separator">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Sleep">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Space">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Subtract">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="T">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Tab">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="U">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Up">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="V">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="VolumeDown">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="VolumeMute">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="VolumeUp">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="W">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="X">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Y">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Z">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="Zoom">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="ChatPadGreen">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+      <Element name="ChatPadOrange">
+        <IsStatic>true</IsStatic>
+        <Type>Microsoft.Xna.Framework.Input.Keys</Type>
+      </Element>
+    </Type>
     <Type name="LeverProcessor" fullName="GarageGames.Torque.T2D.T2DProcessComponent+LeverProcessor">
       <Element name="LeverIndex">
         <Type>System.Int32</Type>
@@ -861,6 +1537,10 @@
       <Element name="ConstantDirection">
         <Type>System.Single</Type>
       </Element>
+    </Type>
+    <Type name="OnInteractionDelegate" fullName="FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate">
+      <IsDelegate>true</IsDelegate>
+      <IsInstantiable>false</IsInstantiable>
     </Type>
     <Type name="OnRegisteredDelegate" fullName="GarageGames.Torque.Core.OnRegisteredDelegate">
       <IsDelegate>true</IsDelegate>
@@ -1311,6 +1991,7 @@
     <Type name="TorqueComponent" fullName="GarageGames.Torque.Core.TorqueComponent">
       <DerivedTypes>
         <Type>FreeTheMarket.Components.InteractibleComponent</Type>
+        <Type>FreeTheMarket.Components.InteractorComponent</Type>
         <Type>FreeTheMarket.MovementComponent</Type>
         <Type>GarageGames.Torque.Lighting.T2DLightComponent</Type>
         <Type>GarageGames.Torque.T2D.T2DAnimationComponent</Type>
