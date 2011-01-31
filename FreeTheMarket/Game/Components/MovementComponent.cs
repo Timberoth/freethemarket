@@ -36,8 +36,12 @@ namespace FreeTheMarket
         {
             get { return _playerNumber; }
             set { _playerNumber = value; }
-        }       
+        }
 
+        public Facing PlayerFacing
+        {
+            get { return _currentFacing; }
+        }
         
         /*
          * Animation Variables 

@@ -32,6 +32,9 @@
         <Type>Microsoft.Xna.Framework.Input.Keys</Type>
         <DefaultValue>Space</DefaultValue>
       </Element>
+      <Element name="InteractionDirection">
+        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
+      </Element>
       <Element name="InteractionDelegate">
         <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
       </Element>
@@ -442,6 +445,25 @@
     </Type>
   </ExplicitTypes>
   <ReferencedTypes>
+    <Type name="ActivationDirection" fullName="FreeTheMarket.Components.InteractibleComponent+ActivationDirection">
+      <IsEnum>true</IsEnum>
+      <Element name="Up">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
+      </Element>
+      <Element name="Down">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
+      </Element>
+      <Element name="Left">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
+      </Element>
+      <Element name="Right">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
+      </Element>
+    </Type>
     <Type name="Animation" fullName="GarageGames.Torque.T2D.T2DAnimationComponent+Animation">
       <Element name="ParameterName">
         <Type>System.String</Type>
