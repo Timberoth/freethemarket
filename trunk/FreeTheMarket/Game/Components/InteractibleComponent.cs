@@ -39,6 +39,8 @@ namespace FreeTheMarket.Components
 
         //======================================================
         #region Public properties, operators, constants, and enums
+
+        public enum ActivationDirection { Up, Down, Left, Right }
         
         public int PlayerNumber
         {
@@ -58,6 +60,12 @@ namespace FreeTheMarket.Components
         {
             get { return _kbControlInteraction; }
             set { _kbControlInteraction = value; }
+        }
+
+        public ActivationDirection InteractionDirection
+        {
+            get { return _interactionDirection; }
+            set { _interactionDirection = value; }
         }
 
         // Define delegate method
@@ -252,6 +260,9 @@ namespace FreeTheMarket.Components
 
         // Distance for interaction
         float _interactionDistance;
+
+        // Direction of activation (up, down, left, right)
+        ActivationDirection _interactionDirection;
 
         // Key to listen to
         Keys _kbControlInteraction;

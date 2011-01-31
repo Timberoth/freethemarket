@@ -75,13 +75,67 @@ namespace FreeTheMarket.Components
                             if (component.InteractionKey == _kbControlInteraction)
                             {
 
-                                // TODO if required conditions are true
-
                                 // If there is a delegate method set up
                                 if (component.InteractionDelegate != null)
                                 {
-                                    // Then fire that method
-                                    component.InteractionDelegate(current);
+                                    // TODO if required conditions are true
+                                    MovementComponent moveComponent = this.Owner.Components.FindComponent<MovementComponent>();
+                                    if (moveComponent != null)
+                                    {
+                                        T2DSceneObject parentObject = this.Owner as T2DSceneObject;
+                                        if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Left &&
+                                                moveComponent.PlayerFacing == MovementComponent.Facing.Right)
+                                        {
+                                            // If at correct distance
+                                            if (parentObject.Position.X >= current.Position.X - component.InteractionDistance &&
+                                                parentObject.Position.X < current.Position.X &&
+                                                parentObject.Position.Y > current.Position.Y - current.Size.Y / 4 &&
+                                                parentObject.Position.Y < current.Position.Y + current.Size.Y / 4)
+                                            {
+                                                // Then fire that method
+                                                component.InteractionDelegate(current);
+                                            }
+                                        }
+                                        if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Right &&
+                                                moveComponent.PlayerFacing == MovementComponent.Facing.Left) 
+                                        {
+                                            // If at correct distance
+                                            if (parentObject.Position.X <= current.Position.X + component.InteractionDistance &&
+                                                parentObject.Position.X > current.Position.X &&
+                                                parentObject.Position.Y > current.Position.Y - current.Size.Y / 4 &&
+                                                parentObject.Position.Y < current.Position.Y + current.Size.Y / 4)
+                                            {
+                                                // Then fire that method
+                                                component.InteractionDelegate(current);
+                                            }
+                                        }
+                                        if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Up &&
+                                                moveComponent.PlayerFacing == MovementComponent.Facing.Down)
+                                        {
+                                            // If at correct distance
+                                            if (parentObject.Position.Y >= current.Position.Y - component.InteractionDistance &&
+                                                parentObject.Position.Y < current.Position.Y &&
+                                                parentObject.Position.X > current.Position.X - current.Size.X / 4 &&
+                                                parentObject.Position.X < current.Position.X + current.Size.X / 4)
+                                            {
+                                                // Then fire that method
+                                                component.InteractionDelegate(current);
+                                            }
+                                        }
+                                        if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Down &&
+                                                moveComponent.PlayerFacing == MovementComponent.Facing.Up)
+                                        {
+                                            // If at correct distance
+                                            if (parentObject.Position.Y <= current.Position.Y + component.InteractionDistance &&
+                                                parentObject.Position.Y > current.Position.Y &&
+                                                parentObject.Position.X > current.Position.X - current.Size.X / 4 &&
+                                                parentObject.Position.X < current.Position.X + current.Size.X / 4)
+                                            {
+                                                // Then fire that method
+                                                component.InteractionDelegate(current);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
