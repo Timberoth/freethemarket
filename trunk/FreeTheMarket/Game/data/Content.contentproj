@@ -150,4 +150,17 @@
       <Name>perspective_background</Name>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="levels\Room2.txscene">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Room2</Name>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="images\Room2_Background.jpg">
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Name>Room2_Background</Name>
+    </Compile>
+  </ItemGroup>
 </Project>

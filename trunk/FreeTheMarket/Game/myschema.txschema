@@ -35,6 +35,9 @@
       <Element name="InteractionDirection">
         <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
       </Element>
+      <Element name="CustomStringData">
+        <Type>System.String</Type>
+      </Element>
       <Element name="InteractionDelegate">
         <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
       </Element>
@@ -46,6 +49,10 @@
         <Type>System.String</Type>
       </Element>
       <Element name="DestroyDelegate">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
+      </Element>
+      <Element name="ChangeSceneDelegate">
         <IsStatic>true</IsStatic>
         <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
       </Element>

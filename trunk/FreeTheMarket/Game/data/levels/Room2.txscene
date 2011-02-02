@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<!--Torque X Builder - http://www.garagegames.com-->
+<!--Type: Scene-->
+<!--Target: TorqueX-->
+<!--Version: 2-->
+<!--Creator: Torque X Builder-->
+<TorqueSceneData>
+    <Version>1.0</Version>
+    <SceneData>
+        <ObjectTypeDeclaration>
+            <LockTypes>true</LockTypes>
+            <ObjectTypes>
+                <string>t2dScrollerType</string>
+                <string>t2dSpriteType</string>
+                <string>t2dAnimatedSpriteType</string>
+                <string>t2dParticleEffectType</string>
+                <string>t2dTileLayerType</string>
+                <string>TileType</string>
+            </ObjectTypes>
+        </ObjectTypeDeclaration>
+        <T2DSceneGraph name="DefaultSceneGraph">
+            <T2DSceneContainer>
+                <BinSize>20</BinSize>
+                <BinCount>256</BinCount>
+            </T2DSceneContainer>
+        </T2DSceneGraph>
+        <Camera2D name="">
+            <CenterPosition>
+                <X>0</X>
+                <Y>0</Y>
+            </CenterPosition>
+            <Extent>
+                <X>100</X>
+                <Y>75</Y>
+            </Extent>
+            <UseCameraWorldLimits>false</UseCameraWorldLimits>
+        </Camera2D>
+    </SceneData>
+    <Materials>
+        <SimpleMaterial name="tridentdMaterial" type="GarageGames.Torque.Materials.SimpleMaterial">
+            <TextureFilename>data/images/trident-d.png</TextureFilename>
+            <IsTranslucent>false</IsTranslucent>
+            <IsAdditive>false</IsAdditive>
+        </SimpleMaterial>
+        <SimpleMaterial name="chronotrigger_crono_movement_sheetMaterial" type="GarageGames.Torque.Materials.SimpleMaterial">
+            <TextureFilename>data/images/chronotrigger_crono_movement_sheet.png</TextureFilename>
+            <IsTranslucent>false</IsTranslucent>
+            <IsAdditive>false</IsAdditive>
+            <TextureDivider type="GarageGames.Torque.Materials.CellCountDivider">
+                <CellCountX>4</CellCountX>
+                <CellCountY>8</CellCountY>
+            </TextureDivider>
+        </SimpleMaterial>
+        <SimpleMaterial name="chronotrigger_crono_idle_sheetMaterial" type="GarageGames.Torque.Materials.SimpleMaterial">
+            <TextureFilename>data/images/chronotrigger_crono_idle_sheet.png</TextureFilename>
+            <IsTranslucent>false</IsTranslucent>
+            <IsAdditive>false</IsAdditive>
+            <TextureDivider type="GarageGames.Torque.Materials.CellCountDivider">
+                <CellCountX>4</CellCountX>
+                <CellCountY>4</CellCountY>
+            </TextureDivider>
+        </SimpleMaterial>
+        <SimpleMaterial name="perspective_backgroundMaterial" type="GarageGames.Torque.Materials.SimpleMaterial">
+            <TextureFilename>data/images/perspective_background.jpg</TextureFilename>
+            <IsTranslucent>false</IsTranslucent>
+            <IsAdditive>false</IsAdditive>
+        </SimpleMaterial>
+        <SimpleMaterial name="Room2_BackgroundMaterial" type="GarageGames.Torque.Materials.SimpleMaterial">
+            <TextureFilename>data/images/Room2_Background.jpg</TextureFilename>
+            <IsTranslucent>true</IsTranslucent>
+        </SimpleMaterial>
+    </Materials>
+    <Objects>
+        <T2DCollisionMaterial name="DefaultCollisionMaterial">
+            <Restitution>1</Restitution>
+            <Friction>0.3</Friction>
+            <Priority>0</Priority>
+        </T2DCollisionMaterial>
+        <AnimationData name="Walk_Down">
+            <Material nameRef="chronotrigger_crono_movement_sheetMaterial" />
+            <AnimationFrames>0 4 8 12 16 20</AnimationFrames>
+            <AnimationDuration>0.75</AnimationDuration>
+            <AnimationCycle>true</AnimationCycle>
+        </AnimationData>
+        <AnimationData name="Walk_Left">
+            <Material nameRef="chronotrigger_crono_movement_sheetMaterial" />
+            <AnimationFrames>1 5 9 13 17 21</AnimationFrames>
+            <AnimationDuration>0.75</AnimationDuration>
+            <AnimationCycle>true</AnimationCycle>
+        </AnimationData>
+        <AnimationData name="Walk_Up">
+            <Material nameRef="chronotrigger_crono_movement_sheetMaterial" />
+            <AnimationFrames>2 6 10 14 18 22</AnimationFrames>
+            <AnimationDuration>0.75</AnimationDuration>
+            <AnimationCycle>true</AnimationCycle>
+        </AnimationData>
+        <AnimationData name="Walk_Right">
+            <Material nameRef="chronotrigger_crono_movement_sheetMaterial" />
+            <AnimationFrames>3 7 11 15 19 23</AnimationFrames>
+            <AnimationDuration>0.75</AnimationDuration>
+            <AnimationCycle>true</AnimationCycle>
+        </AnimationData>
+        <AnimationData name="Idle_Down">
+            <Material nameRef="chronotrigger_crono_idle_sheetMaterial" />
+            <AnimationFrames>0 4 8 12</AnimationFrames>
+            <AnimationDuration>4</AnimationDuration>
+            <AnimationCycle>true</AnimationCycle>
+        </AnimationData>
+        <AnimationData name="Idle_Left">
+            <Material nameRef="chronotrigger_crono_idle_sheetMaterial" />
+            <AnimationFrames>1 5 9 13</AnimationFrames>
+            <AnimationDuration>4</AnimationDuration>
+            <AnimationCycle>true</AnimationCycle>
+        </AnimationData>
+        <AnimationData name="Idle_Up">
+            <Material nameRef="chronotrigger_crono_idle_sheetMaterial" />
+            <AnimationFrames>2 6 10 14</AnimationFrames>
+            <AnimationDuration>4</AnimationDuration>
+            <AnimationCycle>true</AnimationCycle>
+        </AnimationData>
+        <AnimationData name="Idle_Right">
+            <Material nameRef="chronotrigger_crono_idle_sheetMaterial" />
+            <AnimationFrames>3 7 11 15</AnimationFrames>
+            <AnimationDuration>4</AnimationDuration>
+            <AnimationCycle>true</AnimationCycle>
+        </AnimationData>
+        <StaticSprite>
+            <CreateWithPhysics>false</CreateWithPhysics>
+            <CreateWithCollision>false</CreateWithCollision>
+            <ObjectType>
+                <object objTypeRef="t2dSpriteType" />
+            </ObjectType>
+            <Pool>false</Pool>
+            <PoolWithComponents>false</PoolWithComponents>
+            <IsTemplate>false</IsTemplate>
+            <IsPersistent>false</IsPersistent>
+            <Layer>1</Layer>
+            <Size>
+                <X>120.843</X>
+                <Y>83.563</Y>
+            </Size>
+            <Position>
+                <X>-1.223</X>
+                <Y>0.219</Y>
+            </Position>
+            <Rotation>0</Rotation>
+            <CollisionsEnabled>false</CollisionsEnabled>
+            <Visible>true</Visible>
+            <VisibilityLevel>1</VisibilityLevel>
+            <FlipX>false</FlipX>
+            <FlipY>false</FlipY>
+            <SortPoint>
+                <X>0.000000</X>
+                <Y>0.000000</Y>
+            </SortPoint>
+            <Material nameRef="Room2_BackgroundMaterial" />
+            <MaterialRegionIndex>0</MaterialRegionIndex>
+        </StaticSprite>
+    </Objects>
+</TorqueSceneData>
