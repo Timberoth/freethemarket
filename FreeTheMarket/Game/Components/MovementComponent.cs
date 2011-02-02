@@ -16,7 +16,7 @@ namespace FreeTheMarket
     [TorqueXmlSchemaDependency(Type = typeof(T2DPhysicsComponent))]    
 
     public class MovementComponent : TorqueComponent, ITickObject
-    {
+    {        
         //======================================================
         #region Constructors
         #endregion
@@ -144,7 +144,10 @@ namespace FreeTheMarket
                 {
                     // Check the character's current facing direction, if it has changed, switch animations.
                     // Note that VelocityY is swapped.
-                    double facingAngle = CalculateFacingAngle( new Vector2( _sceneObject.Physics.VelocityX, -_sceneObject.Physics.VelocityY ) );
+                    Vector2 tempVector;
+                    tempVector.X = _sceneObject.Physics.VelocityX;
+                    tempVector.Y = -_sceneObject.Physics.VelocityY;
+                    double facingAngle = CalculateFacingAngle( tempVector );
                     
                     _currentFacing = CalculateFacing(facingAngle);
                                                            
@@ -176,7 +179,10 @@ namespace FreeTheMarket
 
         public double CalculateFacingAngle(Vector2 currentVelocity)
         {
-            double angle = CalculateAngleBetweenVectors(new Vector2(1.0f, 0.0f), currentVelocity);
+            Vector2 tempVector;
+            tempVector.X = 1.0f;
+            tempVector.Y = 0.0f;
+            double angle = CalculateAngleBetweenVectors( tempVector, currentVelocity);
 
             // If in Quad III or IV convert to 180 to 360
             if (currentVelocity.Y < 0)
