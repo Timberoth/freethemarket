@@ -68,6 +68,12 @@ namespace FreeTheMarket.Components
             set { _interactionDirection = value; }
         }
 
+        public String CustomStringData
+        {
+            get { return _customStringData; }
+            set { _customStringData = value; }
+        }
+
         // Define delegate method
         public delegate void OnInteractionDelegate(T2DSceneObject ourObject);
 
@@ -81,6 +87,11 @@ namespace FreeTheMarket.Components
         public static OnInteractionDelegate DestroyDelegate
         {
             get { return DestroyInteraction; }
+        }
+
+        public static OnInteractionDelegate ChangeSceneDelegate
+        {
+            get { return ChangeSceneInteraction; }
         }
 
         public T2DSceneObject SceneObject
@@ -168,9 +179,30 @@ namespace FreeTheMarket.Components
             // TODO copy all private fields
         }
 
+        // Destroy the object being interacted with.
         public static void DestroyInteraction(T2DSceneObject ourObject)
         {
             ourObject.MarkForDelete = true;
+        }
+
+
+        // Change the scene after the interaction.
+        public static void ChangeSceneInteraction(T2DSceneObject ourObject)
+        {
+             InteractibleComponent component = ourObject.Components.FindComponent<InteractibleComponent>();
+
+            // On proceed further if this sceneobject actually has the required component.
+            if (component != null)
+            {
+                // Change the scene using the SceneManager
+                String newScene = component._customStringData;
+
+                // Load up the new scene
+                Game.Instance.SceneLoader.Load(newScene);
+
+                // Need to figure out how to bring the character over into the new scene.
+
+            }            
         }
 
         #endregion
@@ -260,6 +292,9 @@ namespace FreeTheMarket.Components
 
         // Distance for interaction
         float _interactionDistance;
+
+        // Custom String Data for various uses
+        String _customStringData;
 
         // Direction of activation (up, down, left, right)
         ActivationDirection _interactionDirection;

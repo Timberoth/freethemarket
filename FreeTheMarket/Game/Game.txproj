@@ -6,7 +6,7 @@
 <!--Creator: Torque X Builder-->
 <TorqueXProject>
     <ProjectData>
-        <LastLevel>C:/Users/OscarC/Desktop/ftm/c_projects/FreeTheMarket/FreeTheMarket/Game/data/levels/Gameplay.txscene</LastLevel>
+        <LastLevel>C:/projects/FreeTheMarket/FreeTheMarket/Game/data/levels/Gameplay.txscene</LastLevel>
         <StaticSprites>
             <SimSet>
                 <canSaveDynamicFields>true</canSaveDynamicFields>
@@ -15,12 +15,12 @@
                     <class>T2DPhysicsMaterial</class>
                     <superclass></superclass>
                     <DynamicFieldCount>3</DynamicFieldCount>
-                    <DynamicFieldName0>Friction</DynamicFieldName0>
-                    <DynamicFieldValue0>0.3</DynamicFieldValue0>
-                    <DynamicFieldName1>priority</DynamicFieldName1>
-                    <DynamicFieldValue1>0</DynamicFieldValue1>
-                    <DynamicFieldName2>Restitution</DynamicFieldName2>
-                    <DynamicFieldValue2>1</DynamicFieldValue2>
+                    <DynamicFieldName0>priority</DynamicFieldName0>
+                    <DynamicFieldValue0>0</DynamicFieldValue0>
+                    <DynamicFieldName1>Restitution</DynamicFieldName1>
+                    <DynamicFieldValue1>1</DynamicFieldValue1>
+                    <DynamicFieldName2>Friction</DynamicFieldName2>
+                    <DynamicFieldValue2>0.3</DynamicFieldValue2>
                 </ScriptObject>
                 <t2dImageMapDatablock name="tridentdMaterial">
                     <imageMode>FULL</imageMode>
@@ -239,6 +239,18 @@
                     <DynamicFieldName9>isScroller</DynamicFieldName9>
                     <DynamicFieldValue9>0</DynamicFieldValue9>
                     <imageName>data/images/perspective_background.jpg</imageName>
+                </t2dImageMapDatablock>
+                <t2dImageMapDatablock name="Room2_BackgroundMaterial">
+                    <imageMode>FULL</imageMode>
+                    <filterPad>false</filterPad>
+                    <preferPerf>true</preferPerf>
+                    <linkImageMaps></linkImageMaps>
+                    <preload>true</preload>
+                    <allowUnload>false</allowUnload>
+                    <DynamicFieldCount>1</DynamicFieldCount>
+                    <DynamicFieldName0>translucent</DynamicFieldName0>
+                    <DynamicFieldValue0>1</DynamicFieldValue0>
+                    <imageName>data/images/Room2_Background.jpg</imageName>
                 </t2dImageMapDatablock>
             </SimSet>
         </StaticSprites>
