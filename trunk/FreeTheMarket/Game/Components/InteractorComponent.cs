@@ -60,10 +60,16 @@ namespace FreeTheMarket.Components
             // todo: perform processing for component here
             if (move != null)
             {
-                // if player is firing action
-                if (move.Buttons[0].Pushed)
+                // if the button is not being pressed/has been let go of
+                if (!move.Buttons[0].Pushed)
                 {
+                    _isHeld = false;
+                }
 
+                // if player is currently starting to fire action
+                if (move.Buttons[0].Pushed && !_isHeld)
+                {
+                    _isHeld = true;
                     List<T2DSceneObject> sceneObjects = TorqueObjectDatabase.Instance.FindObjects<T2DSceneObject>();
                     for (int i = 0; i < sceneObjects.Count; i++)
                     {
@@ -97,7 +103,7 @@ namespace FreeTheMarket.Components
                                             }
                                         }
                                         if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Right &&
-                                                moveComponent.PlayerFacing == MovementComponent.Facing.Left) 
+                                                moveComponent.PlayerFacing == MovementComponent.Facing.Left)
                                         {
                                             // If at correct distance
                                             if (parentObject.Position.X <= current.Position.X + component.InteractionDistance &&
@@ -223,6 +229,8 @@ namespace FreeTheMarket.Components
         int _player;
         // Key that is to be used for interaction
         Keys _kbControlInteraction;
+        // Used to see if button was just pressed or is being held
+        bool _isHeld = false;
 
         #endregion
     }
