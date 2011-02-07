@@ -140,7 +140,7 @@ namespace FreeTheMarket
                 }
 
                 // If there is stick movement, then check if we need to switch animations
-                else
+                else if (!_preventChange)
                 {
                     // Check the character's current facing direction, if it has changed, switch animations.
                     // Note that VelocityY is swapped.
@@ -231,12 +231,19 @@ namespace FreeTheMarket
             // Should never get here
             return Facing.Down;            
         }
-        
-        #endregion
 
+        public void PreventFaceChange()
+        {
+            this._preventChange = true;
+        }
+
+        public void AllowFaceChange()
+        {
+            this._preventChange = false;
+        }
         
-        
-        
+        #endregion    
+    
         //======================================================
         #region Private, protected, internal methods
         protected override bool _OnRegister(TorqueObject owner)
@@ -322,6 +329,8 @@ namespace FreeTheMarket
         
         // Track facing direction
         Facing _currentFacing;
+        // Should we change face
+        bool _preventChange = false;
 
         // Track previous velocity values as a vector
         Vector2 _prevVelocity;

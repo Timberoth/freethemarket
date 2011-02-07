@@ -24,22 +24,29 @@
       <Element name="PlayerNumber">
         <Type>System.Int32</Type>
       </Element>
-      <Element name="InteractionDistance">
-        <Type>System.Single</Type>
-        <DefaultValue>10</DefaultValue>
-      </Element>
       <Element name="InteractionKey">
         <Type>Microsoft.Xna.Framework.Input.Keys</Type>
         <DefaultValue>Space</DefaultValue>
       </Element>
       <Element name="InteractionDirection">
-        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
+        <Type>FreeTheMarket.Components.InteractibleComponent+InteractionDirections</Type>
+      </Element>
+      <Element name="InteractionType">
+        <Type>FreeTheMarket.Components.InteractibleComponent+InteractionTypes</Type>
+        <DefaultValue>OneShot</DefaultValue>
+      </Element>
+      <Element name="InteractionDistance">
+        <Type>System.Single</Type>
+        <DefaultValue>10</DefaultValue>
       </Element>
       <Element name="CustomStringData">
         <Type>System.String</Type>
       </Element>
-      <Element name="InteractionDelegate">
-        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
+      <Element name="InteractionBeginDelegate">
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionBeginDelegate</Type>
+      </Element>
+      <Element name="InteractionEndDelegate">
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionEndDelegate</Type>
       </Element>
       <Element name="Components">
         <IsList>true</IsList>
@@ -48,13 +55,21 @@
       <Element name="Name">
         <Type>System.String</Type>
       </Element>
-      <Element name="DestroyDelegate">
+      <Element name="DragBegin">
         <IsStatic>true</IsStatic>
-        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionBeginDelegate</Type>
+      </Element>
+      <Element name="DragEnd">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionEndDelegate</Type>
       </Element>
       <Element name="ChangeSceneDelegate">
         <IsStatic>true</IsStatic>
-        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate</Type>
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionBeginDelegate</Type>
+      </Element>
+      <Element name="Destroy">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+OnInteractionBeginDelegate</Type>
       </Element>
     </Type>
     <Type name="InteractorComponent" fullName="FreeTheMarket.Components.InteractorComponent">
@@ -63,7 +78,7 @@
         <Type>System.Int32</Type>
         <DefaultValue>0</DefaultValue>
       </Element>
-      <Element name="Interaction">
+      <Element name="InteractionKey">
         <Type>Microsoft.Xna.Framework.Input.Keys</Type>
         <DefaultValue>Space</DefaultValue>
       </Element>
@@ -452,25 +467,6 @@
     </Type>
   </ExplicitTypes>
   <ReferencedTypes>
-    <Type name="ActivationDirection" fullName="FreeTheMarket.Components.InteractibleComponent+ActivationDirection">
-      <IsEnum>true</IsEnum>
-      <Element name="Up">
-        <IsStatic>true</IsStatic>
-        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
-      </Element>
-      <Element name="Down">
-        <IsStatic>true</IsStatic>
-        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
-      </Element>
-      <Element name="Left">
-        <IsStatic>true</IsStatic>
-        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
-      </Element>
-      <Element name="Right">
-        <IsStatic>true</IsStatic>
-        <Type>FreeTheMarket.Components.InteractibleComponent+ActivationDirection</Type>
-      </Element>
-    </Type>
     <Type name="Animation" fullName="GarageGames.Torque.T2D.T2DAnimationComponent+Animation">
       <Element name="ParameterName">
         <Type>System.String</Type>
@@ -840,6 +836,36 @@
       <Element name="MinValue">
         <IsStatic>true</IsStatic>
         <Type>System.Int32</Type>
+      </Element>
+    </Type>
+    <Type name="InteractionDirections" fullName="FreeTheMarket.Components.InteractibleComponent+InteractionDirections">
+      <IsEnum>true</IsEnum>
+      <Element name="Up">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+InteractionDirections</Type>
+      </Element>
+      <Element name="Down">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+InteractionDirections</Type>
+      </Element>
+      <Element name="Left">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+InteractionDirections</Type>
+      </Element>
+      <Element name="Right">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+InteractionDirections</Type>
+      </Element>
+    </Type>
+    <Type name="InteractionTypes" fullName="FreeTheMarket.Components.InteractibleComponent+InteractionTypes">
+      <IsEnum>true</IsEnum>
+      <Element name="OneShot">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+InteractionTypes</Type>
+      </Element>
+      <Element name="Continuous">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.Components.InteractibleComponent+InteractionTypes</Type>
       </Element>
     </Type>
     <Type name="Keys" fullName="Microsoft.Xna.Framework.Input.Keys">
@@ -1567,7 +1593,11 @@
         <Type>System.Single</Type>
       </Element>
     </Type>
-    <Type name="OnInteractionDelegate" fullName="FreeTheMarket.Components.InteractibleComponent+OnInteractionDelegate">
+    <Type name="OnInteractionBeginDelegate" fullName="FreeTheMarket.Components.InteractibleComponent+OnInteractionBeginDelegate">
+      <IsDelegate>true</IsDelegate>
+      <IsInstantiable>false</IsInstantiable>
+    </Type>
+    <Type name="OnInteractionEndDelegate" fullName="FreeTheMarket.Components.InteractibleComponent+OnInteractionEndDelegate">
       <IsDelegate>true</IsDelegate>
       <IsInstantiable>false</IsInstantiable>
     </Type>
