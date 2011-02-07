@@ -40,19 +40,13 @@ namespace FreeTheMarket.Components
         //======================================================
         #region Public properties, operators, constants, and enums
 
-        public enum ActivationDirection { Up, Down, Left, Right }
+        public enum InteractionDirections { Up, Down, Left, Right }
+        public enum InteractionTypes { OneShot, Continuous }
         
         public int PlayerNumber
         {
             get { return _playerNumber; }
             set { _playerNumber = value; }
-        }
-
-        [TorqueXmlSchemaType(DefaultValue = "10")]
-        public float InteractionDistance
-        {
-            get { return _interactionDistance; }
-            set { _interactionDistance = value; }
         }
 
         [TorqueXmlSchemaType(DefaultValue = "Space")]
@@ -62,10 +56,24 @@ namespace FreeTheMarket.Components
             set { _kbControlInteraction = value; }
         }
 
-        public ActivationDirection InteractionDirection
+        public InteractionDirections InteractionDirection
         {
             get { return _interactionDirection; }
             set { _interactionDirection = value; }
+        }
+
+        [TorqueXmlSchemaType(DefaultValue = "OneShot")]
+        public InteractionTypes InteractionType
+        {
+            get { return _interactionType; }
+            set { _interactionType = value; }
+        }
+
+        [TorqueXmlSchemaType(DefaultValue = "10")]
+        public float InteractionDistance
+        {
+            get { return _interactionDistance; }
+            set { _interactionDistance = value; }
         }
 
         public String CustomStringData
@@ -75,23 +83,41 @@ namespace FreeTheMarket.Components
         }
 
         // Define delegate method
-        public delegate void OnInteractionDelegate(T2DSceneObject ourObject);
+        public delegate void OnInteractionBeginDelegate(T2DSceneObject ourObject, T2DSceneObject theirObject);
+        public delegate void OnInteractionEndDelegate(T2DSceneObject ourObject, T2DSceneObject theirObject);
 
-        public OnInteractionDelegate InteractionDelegate
+        // Get and sets for delegate methods
+        public OnInteractionBeginDelegate InteractionBeginDelegate
         {
-            get { return _onInteraction; }
-            set { _onInteraction = value; }
+            get { return _onInteractionBegin; }
+            set { _onInteractionBegin = value; }
+        }
+
+        public OnInteractionEndDelegate InteractionEndDelegate
+        {
+            get { return _onInteractionEnd; }
+            set { _onInteractionEnd = value; }
         }
 
         // Define function to be used as delegated
-        public static OnInteractionDelegate DestroyDelegate
+        public static OnInteractionBeginDelegate DragBegin
         {
-            get { return DestroyInteraction; }
+            get { return DragBeginInteraction; }
         }
 
-        public static OnInteractionDelegate ChangeSceneDelegate
+        public static OnInteractionEndDelegate DragEnd
+        {
+            get { return DragEndInteraction; }
+        }
+
+        public static OnInteractionBeginDelegate ChangeSceneDelegate
         {
             get { return ChangeSceneInteraction; }
+        }
+
+        public static OnInteractionBeginDelegate Destroy
+        {
+            get { return DestroyInteraction; }
         }
 
         public T2DSceneObject SceneObject
@@ -180,14 +206,33 @@ namespace FreeTheMarket.Components
         }
 
         // Destroy the object being interacted with.
-        public static void DestroyInteraction(T2DSceneObject ourObject)
+        public static void DestroyInteraction(T2DSceneObject ourObject, T2DSceneObject theirObject)
         {
             ourObject.MarkForDelete = true;
         }
 
+        public static void DragBeginInteraction(T2DSceneObject ourObject, T2DSceneObject theirObject)
+        {
+            Vector2 newPos = new Vector2();
+            newPos.Y = theirObject.Position.Y + theirObject.Size.Y / 2 + ourObject.Size.Y / 2;
+            newPos.X = theirObject.Position.X;
+            ourObject.SetPosition(newPos, true);
+            ourObject.CollisionsEnabled = false;
+
+            MovementComponent theirMove = theirObject.Components.FindComponent<MovementComponent>();
+            theirMove.PreventFaceChange();
+        }
+
+        public static void DragEndInteraction(T2DSceneObject ourObject, T2DSceneObject theirObject)
+        {
+            MovementComponent theirMove = theirObject.Components.FindComponent<MovementComponent>();
+            theirMove.AllowFaceChange();
+
+            ourObject.CollisionsEnabled = true;
+        }
 
         // Change the scene after the interaction.
-        public static void ChangeSceneInteraction(T2DSceneObject ourObject)
+        public static void ChangeSceneInteraction(T2DSceneObject ourObject, T2DSceneObject theirObject)
         {
              InteractibleComponent component = ourObject.Components.FindComponent<InteractibleComponent>();
 
@@ -297,13 +342,17 @@ namespace FreeTheMarket.Components
         String _customStringData;
 
         // Direction of activation (up, down, left, right)
-        ActivationDirection _interactionDirection;
+        InteractionDirections _interactionDirection;
+        // Type of interaction: OneShot / Continuous
+        InteractionTypes _interactionType;
 
         // Key to listen to
         Keys _kbControlInteraction;
 
-        // Delegate method after interaction
-        OnInteractionDelegate _onInteraction;
+        // Delegate method for interaction activation
+        OnInteractionBeginDelegate _onInteractionBegin;
+        // Delegate method after interaction activation
+        OnInteractionEndDelegate _onInteractionEnd;
         
         #endregion
     }

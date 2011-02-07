@@ -44,7 +44,7 @@ namespace FreeTheMarket.Components
         }
 
         [TorqueXmlSchemaType(DefaultValue = "Space")]
-        public Keys Interaction
+        public Keys InteractionKey
         {
             get { return _kbControlInteraction; }
             set { _kbControlInteraction = value; }
@@ -63,13 +63,20 @@ namespace FreeTheMarket.Components
                 // if the button is not being pressed/has been let go of
                 if (!move.Buttons[0].Pushed)
                 {
-                    _isHeld = false;
+                    this._isHeld = false;
+                    foreach (T2DSceneObject obj in this._objectsActivated)
+                    {
+                        InteractibleComponent component = obj.Components.FindComponent<InteractibleComponent>();
+                        if (component != null)
+                        {
+                            component.InteractionEndDelegate(component.SceneObject, this.SceneObject);
+                        }
+                    }
                 }
 
                 // if player is currently starting to fire action
-                if (move.Buttons[0].Pushed && !_isHeld)
+                if (move.Buttons[0].Pushed)
                 {
-                    _isHeld = true;
                     List<T2DSceneObject> sceneObjects = TorqueObjectDatabase.Instance.FindObjects<T2DSceneObject>();
                     for (int i = 0; i < sceneObjects.Count; i++)
                     {
@@ -78,18 +85,22 @@ namespace FreeTheMarket.Components
                         if (component != null)
                         {
                             // If this interactor's action key is equivalent to a component's key
-                            if (component.InteractionKey == _kbControlInteraction)
+                            // And if the component is just firing or continuous
+                            if (component.InteractionKey == this.InteractionKey &&
+                                ((component.InteractionType == InteractibleComponent.InteractionTypes.OneShot &&
+                                    !_isHeld) ||
+                                component.InteractionType == InteractibleComponent.InteractionTypes.Continuous))
                             {
 
                                 // If there is a delegate method set up
-                                if (component.InteractionDelegate != null)
+                                if (component.InteractionBeginDelegate != null)
                                 {
                                     // TODO if required conditions are true
                                     MovementComponent moveComponent = this.Owner.Components.FindComponent<MovementComponent>();
                                     if (moveComponent != null)
                                     {
-                                        T2DSceneObject parentObject = this.Owner as T2DSceneObject;
-                                        if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Left &&
+                                        T2DSceneObject parentObject = this.SceneObject;
+                                        if (component.InteractionDirection == InteractibleComponent.InteractionDirections.Left &&
                                                 moveComponent.PlayerFacing == MovementComponent.Facing.Right)
                                         {
                                             // If at correct distance
@@ -99,10 +110,15 @@ namespace FreeTheMarket.Components
                                                 parentObject.Position.Y < current.Position.Y + current.Size.Y / 4)
                                             {
                                                 // Then fire that method
-                                                component.InteractionDelegate(current);
+                                                component.InteractionBeginDelegate(current, parentObject);
+                                                // If continuous, restore properties after button release
+                                                if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
+                                                {
+                                                    this._objectsActivated.Add(current);
+                                                }
                                             }
                                         }
-                                        if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Right &&
+                                        if (component.InteractionDirection == InteractibleComponent.InteractionDirections.Right &&
                                                 moveComponent.PlayerFacing == MovementComponent.Facing.Left)
                                         {
                                             // If at correct distance
@@ -112,10 +128,15 @@ namespace FreeTheMarket.Components
                                                 parentObject.Position.Y < current.Position.Y + current.Size.Y / 4)
                                             {
                                                 // Then fire that method
-                                                component.InteractionDelegate(current);
+                                                component.InteractionBeginDelegate(current, parentObject);
+                                                // If continuous, restore properties after button release
+                                                if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
+                                                {
+                                                    this._objectsActivated.Add(current);
+                                                }
                                             }
                                         }
-                                        if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Up &&
+                                        if (component.InteractionDirection == InteractibleComponent.InteractionDirections.Up &&
                                                 moveComponent.PlayerFacing == MovementComponent.Facing.Down)
                                         {
                                             // If at correct distance
@@ -125,10 +146,15 @@ namespace FreeTheMarket.Components
                                                 parentObject.Position.X < current.Position.X + current.Size.X / 4)
                                             {
                                                 // Then fire that method
-                                                component.InteractionDelegate(current);
+                                                component.InteractionBeginDelegate(current, parentObject);
+                                                // If continuous, restore properties after button release
+                                                if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
+                                                {
+                                                    this._objectsActivated.Add(current);
+                                                }
                                             }
                                         }
-                                        if (component.InteractionDirection == InteractibleComponent.ActivationDirection.Down &&
+                                        if (component.InteractionDirection == InteractibleComponent.InteractionDirections.Down &&
                                                 moveComponent.PlayerFacing == MovementComponent.Facing.Up)
                                         {
                                             // If at correct distance
@@ -138,7 +164,12 @@ namespace FreeTheMarket.Components
                                                 parentObject.Position.X < current.Position.X + current.Size.X / 4)
                                             {
                                                 // Then fire that method
-                                                component.InteractionDelegate(current);
+                                                component.InteractionBeginDelegate(current, parentObject);
+                                                // If continuous, restore properties after button release
+                                                if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
+                                                {
+                                                    this._objectsActivated.Add(current);
+                                                }
                                             }
                                         }
                                     }
@@ -146,6 +177,9 @@ namespace FreeTheMarket.Components
                             }
                         }
                     }
+
+                    // After activating any object, action is now considered held
+                    this._isHeld = true;
                 }
             }
         }
@@ -160,7 +194,7 @@ namespace FreeTheMarket.Components
             base.CopyTo(obj);
             InteractorComponent obj2 = obj as InteractorComponent;
             obj2.Player = Player;
-            obj2.Interaction = Interaction;
+            obj2.InteractionKey = InteractionKey;
         }
 
         #endregion
@@ -231,6 +265,8 @@ namespace FreeTheMarket.Components
         Keys _kbControlInteraction;
         // Used to see if button was just pressed or is being held
         bool _isHeld = false;
+        // List of objects that have been activated
+        List<T2DSceneObject> _objectsActivated = new List<T2DSceneObject>();
 
         #endregion
     }

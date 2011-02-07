@@ -130,7 +130,7 @@
             <Components inPlace="true">
                 <InteractorComponent type="FreeTheMarket.Components.InteractorComponent">
                     <Player>0</Player>
-                    <Interaction>Space</Interaction>
+                    <InteractionKey>Space</InteractionKey>
                 </InteractorComponent>
                 <MovementComponent type="FreeTheMarket.MovementComponent">
                     <PlayerNumber>0</PlayerNumber>
@@ -240,9 +240,10 @@
             <Components inPlace="true">
                 <InteractibleComponent type="FreeTheMarket.Components.InteractibleComponent">
                     <PlayerNumber>-1</PlayerNumber>
-                    <InteractionDistance>10</InteractionDistance>
                     <InteractionKey>Space</InteractionKey>
                     <InteractionDirection>Up</InteractionDirection>
+                    <InteractionType>OneShot</InteractionType>
+                    <InteractionDistance>10</InteractionDistance>
                     <CustomStringData></CustomStringData>
                 </InteractibleComponent>
                 <MovementComponent type="FreeTheMarket.MovementComponent">
@@ -393,11 +394,12 @@
             <Components inPlace="true">
                 <InteractibleComponent type="FreeTheMarket.Components.InteractibleComponent">
                     <PlayerNumber>-1</PlayerNumber>
-                    <InteractionDistance>7.500</InteractionDistance>
                     <InteractionKey>Space</InteractionKey>
                     <InteractionDirection>Right</InteractionDirection>
+                    <InteractionType>OneShot</InteractionType>
+                    <InteractionDistance>7.500</InteractionDistance>
                     <CustomStringData></CustomStringData>
-                    <InteractionDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.DestroyDelegate" />
+                    <InteractionBeginDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.Destroy" />
                 </InteractibleComponent>
                 <T2DPhysicsComponent type="GarageGames.Torque.T2D.T2DPhysicsComponent">
                     <Velocity>
@@ -477,11 +479,12 @@
             <Components inPlace="true">
                 <InteractibleComponent type="FreeTheMarket.Components.InteractibleComponent">
                     <PlayerNumber>-1</PlayerNumber>
-                    <InteractionDistance>8.000</InteractionDistance>
                     <InteractionKey>Space</InteractionKey>
                     <InteractionDirection>Left</InteractionDirection>
+                    <InteractionType>OneShot</InteractionType>
+                    <InteractionDistance>8.000</InteractionDistance>
                     <CustomStringData>data/levels/Room2.txscene</CustomStringData>
-                    <InteractionDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.ChangeSceneDelegate" />
+                    <InteractionBeginDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.ChangeSceneDelegate" />
                 </InteractibleComponent>
                 <T2DPhysicsComponent type="GarageGames.Torque.T2D.T2DPhysicsComponent">
                     <Velocity>
@@ -561,11 +564,13 @@
             <Components inPlace="true">
                 <InteractibleComponent type="FreeTheMarket.Components.InteractibleComponent">
                     <PlayerNumber>-1</PlayerNumber>
-                    <InteractionDistance>5.000</InteractionDistance>
                     <InteractionKey>Space</InteractionKey>
                     <InteractionDirection>Up</InteractionDirection>
+                    <InteractionType>Continuous</InteractionType>
+                    <InteractionDistance>8.500</InteractionDistance>
                     <CustomStringData></CustomStringData>
-                    <InteractionDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.DestroyDelegate" />
+                    <InteractionBeginDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.DragBegin" />
+                    <InteractionEndDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.DragEnd" />
                 </InteractibleComponent>
                 <T2DPhysicsComponent type="GarageGames.Torque.T2D.T2DPhysicsComponent">
                     <Velocity>
@@ -645,11 +650,12 @@
             <Components inPlace="true">
                 <InteractibleComponent type="FreeTheMarket.Components.InteractibleComponent">
                     <PlayerNumber>-1</PlayerNumber>
-                    <InteractionDistance>7.000</InteractionDistance>
                     <InteractionKey>Space</InteractionKey>
                     <InteractionDirection>Down</InteractionDirection>
+                    <InteractionType>OneShot</InteractionType>
+                    <InteractionDistance>7.000</InteractionDistance>
                     <CustomStringData></CustomStringData>
-                    <InteractionDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.DestroyDelegate" />
+                    <InteractionBeginDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.Destroy" />
                 </InteractibleComponent>
                 <T2DPhysicsComponent type="GarageGames.Torque.T2D.T2DPhysicsComponent">
                     <Velocity>
