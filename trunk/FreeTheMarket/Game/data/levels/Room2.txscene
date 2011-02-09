@@ -156,5 +156,184 @@
             <Material nameRef="Room2_BackgroundMaterial" />
             <MaterialRegionIndex>0</MaterialRegionIndex>
         </StaticSprite>
+        <AnimatedSprite name="Player">
+            <CreateWithPhysics>false</CreateWithPhysics>
+            <CreateWithCollision>false</CreateWithCollision>
+            <Components inPlace="true">
+                <InteractorComponent type="FreeTheMarket.Components.InteractorComponent">
+                    <Player>0</Player>
+                    <InteractionKey>Space</InteractionKey>
+                </InteractorComponent>
+                <MovementComponent type="FreeTheMarket.MovementComponent">
+                    <PlayerNumber>0</PlayerNumber>
+                    <IdleUp nameRef="Idle_Up" />
+                    <MoveUp nameRef="Walk_Up" />
+                    <IdleDown nameRef="Idle_Down" />
+                    <MoveDown nameRef="Walk_Down" />
+                    <IdleLeft nameRef="Idle_Left" />
+                    <MoveLeft nameRef="Walk_Left" />
+                    <IdleRight nameRef="Idle_Right" />
+                    <MoveRight nameRef="Walk_Right" />
+                </MovementComponent>
+                <T2DPhysicsComponent type="GarageGames.Torque.T2D.T2DPhysicsComponent">
+                    <Velocity>
+                        <X>0</X>
+                        <Y>0</Y>
+                    </Velocity>
+                    <AngularVelocity>0.0</AngularVelocity>
+                    <InverseMass>1.0</InverseMass>
+                    <RotationScale>1.0</RotationScale>
+                    <ProcessCollisionsAtRest>false</ProcessCollisionsAtRest>
+                </T2DPhysicsComponent>
+                <T2DCollisionComponent type="GarageGames.Torque.T2D.T2DCollisionComponent">
+                    <Images>
+                        <T2DPolyImage type="GarageGames.Torque.T2D.T2DPolyImage">
+                            <CollisionPolyBasis>
+                                <Vector2 type="Microsoft.Xna.Framework.Vector2">
+                                    <X>-1.00000</X>
+                                    <Y>-1.00000</Y>
+                                </Vector2>
+                                <Vector2 type="Microsoft.Xna.Framework.Vector2">
+                                    <X>1.00000</X>
+                                    <Y>-1.00000</Y>
+                                </Vector2>
+                                <Vector2 type="Microsoft.Xna.Framework.Vector2">
+                                    <X>1.00000</X>
+                                    <Y>1.00000</Y>
+                                </Vector2>
+                                <Vector2 type="Microsoft.Xna.Framework.Vector2">
+                                    <X>-1.00000</X>
+                                    <Y>1.00000</Y>
+                                </Vector2>
+                            </CollisionPolyBasis>
+                            <CollisionPolyScale>
+                                <X>1</X>
+                                <Y>1</Y>
+                            </CollisionPolyScale>
+                        </T2DPolyImage>
+                    </Images>
+                    <RenderCollisionBounds>false</RenderCollisionBounds>
+                    <ResolveCollision valueOf="GarageGames.Torque.T2D.T2DPhysicsComponent.BounceCollision" />
+                    <SolveOverlap>true</SolveOverlap>
+                    <CollisionMaterial nameRef="DefaultCollisionMaterial" />
+                </T2DCollisionComponent>
+            </Components>
+            <ObjectType>
+                <object objTypeRef="t2dAnimatedSpriteType" />
+            </ObjectType>
+            <Pool>false</Pool>
+            <PoolWithComponents>false</PoolWithComponents>
+            <IsTemplate>false</IsTemplate>
+            <IsPersistent>false</IsPersistent>
+            <Layer>0</Layer>
+            <Size>
+                <X>3.047</X>
+                <Y>4.167</Y>
+            </Size>
+            <Position>
+                <X>7.523</X>
+                <Y>5.083</Y>
+            </Position>
+            <Rotation>0</Rotation>
+            <CollisionsEnabled>true</CollisionsEnabled>
+            <Visible>true</Visible>
+            <VisibilityLevel>1</VisibilityLevel>
+            <FlipX>false</FlipX>
+            <FlipY>false</FlipY>
+            <SortPoint>
+                <X>0.000000</X>
+                <Y>0.000000</Y>
+            </SortPoint>
+            <AnimationData nameRef="Idle_Down" />
+            <StartFrame>0</StartFrame>
+            <RandomStart>false</RandomStart>
+            <PlayOnLoad>true</PlayOnLoad>
+            <RemoveOnFinished>false</RemoveOnFinished>
+        </AnimatedSprite>
+        <StaticSprite>
+            <CreateWithPhysics>false</CreateWithPhysics>
+            <CreateWithCollision>false</CreateWithCollision>
+            <Components inPlace="true">
+                <InteractibleComponent type="FreeTheMarket.Components.InteractibleComponent">
+                    <PlayerNumber>-1</PlayerNumber>
+                    <InteractionKey>Space</InteractionKey>
+                    <InteractionDirection>Left</InteractionDirection>
+                    <InteractionType>OneShot</InteractionType>
+                    <InteractionDistance>10</InteractionDistance>
+                    <CustomStringData>data/levels/Gameplay.txscene</CustomStringData>
+                    <InteractionBeginDelegate valueOf="FreeTheMarket.Components.InteractibleComponent.ChangeSceneDelegate" />
+                </InteractibleComponent>
+                <T2DPhysicsComponent type="GarageGames.Torque.T2D.T2DPhysicsComponent">
+                    <Velocity>
+                        <X>0</X>
+                        <Y>0</Y>
+                    </Velocity>
+                    <AngularVelocity>0.0</AngularVelocity>
+                    <InverseMass>1.0</InverseMass>
+                    <RotationScale>1.0</RotationScale>
+                    <ProcessCollisionsAtRest>false</ProcessCollisionsAtRest>
+                </T2DPhysicsComponent>
+                <T2DCollisionComponent type="GarageGames.Torque.T2D.T2DCollisionComponent">
+                    <Images>
+                        <T2DPolyImage type="GarageGames.Torque.T2D.T2DPolyImage">
+                            <CollisionPolyBasis>
+                                <Vector2 type="Microsoft.Xna.Framework.Vector2">
+                                    <X>-1.00000</X>
+                                    <Y>-1.00000</Y>
+                                </Vector2>
+                                <Vector2 type="Microsoft.Xna.Framework.Vector2">
+                                    <X>1.00000</X>
+                                    <Y>-1.00000</Y>
+                                </Vector2>
+                                <Vector2 type="Microsoft.Xna.Framework.Vector2">
+                                    <X>1.00000</X>
+                                    <Y>1.00000</Y>
+                                </Vector2>
+                                <Vector2 type="Microsoft.Xna.Framework.Vector2">
+                                    <X>-1.00000</X>
+                                    <Y>1.00000</Y>
+                                </Vector2>
+                            </CollisionPolyBasis>
+                            <CollisionPolyScale>
+                                <X>1</X>
+                                <Y>1</Y>
+                            </CollisionPolyScale>
+                        </T2DPolyImage>
+                    </Images>
+                    <RenderCollisionBounds>false</RenderCollisionBounds>
+                    <ResolveCollision valueOf="GarageGames.Torque.T2D.T2DPhysicsComponent.BounceCollision" />
+                    <SolveOverlap>true</SolveOverlap>
+                    <CollisionMaterial nameRef="DefaultCollisionMaterial" />
+                </T2DCollisionComponent>
+            </Components>
+            <ObjectType>
+                <object objTypeRef="t2dSpriteType" />
+            </ObjectType>
+            <Pool>false</Pool>
+            <PoolWithComponents>false</PoolWithComponents>
+            <IsTemplate>false</IsTemplate>
+            <IsPersistent>false</IsPersistent>
+            <Layer>0</Layer>
+            <Size>
+                <X>4.824</X>
+                <Y>6.432</Y>
+            </Size>
+            <Position>
+                <X>27.588</X>
+                <Y>3.784</Y>
+            </Position>
+            <Rotation>0</Rotation>
+            <CollisionsEnabled>true</CollisionsEnabled>
+            <Visible>true</Visible>
+            <VisibilityLevel>1</VisibilityLevel>
+            <FlipX>false</FlipX>
+            <FlipY>false</FlipY>
+            <SortPoint>
+                <X>0.000000</X>
+                <Y>0.000000</Y>
+            </SortPoint>
+            <Material nameRef="tridentdMaterial" />
+            <MaterialRegionIndex>0</MaterialRegionIndex>
+        </StaticSprite>
     </Objects>
 </TorqueSceneData>
