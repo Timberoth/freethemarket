@@ -23,6 +23,10 @@ using GarageGames.Torque.T2D;
 using GarageGames.Torque.SceneGraph;
 using GarageGames.Torque.MathUtil;
 using GarageGames.Torque.Platform;
+using GarageGames.Torque.Core.Xml;
+using GarageGames.Torque.GUI;
+
+using FreeTheMarket.GUI;
 
 namespace FreeTheMarket.Components
 {
@@ -239,17 +243,16 @@ namespace FreeTheMarket.Components
             // On proceed further if this sceneobject actually has the required component.
             if (component != null)
             {
-                // Change the scene using the SceneManager
+                // TODO Change the scene using the SceneManager
                 String newScene = component._customStringData;
+                
+                ScreenManager.Instance.LoadNewScene(newScene);
 
-                // Load up the new scene
-                Game.Instance.SceneLoader.Load(newScene);
 
-                // Need to figure out how to bring the character over into the new scene.
-
+                
             }            
         }
-
+        
         #endregion
 
         //======================================================

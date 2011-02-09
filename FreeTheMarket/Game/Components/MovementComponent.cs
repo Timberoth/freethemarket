@@ -106,7 +106,7 @@ namespace FreeTheMarket
 
         public void ProcessTick(Move move, float elapsed)
         {            
-            if (move != null)
+            if (move != null && move.Sticks.Count > 0)
             {               
                 T2DAnimatedSprite currentAnim = _sceneObject as T2DAnimatedSprite;
 

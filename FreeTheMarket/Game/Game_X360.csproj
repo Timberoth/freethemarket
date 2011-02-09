@@ -87,6 +87,7 @@
     <Compile Include="GUI\GuiPlay.cs" />
     <Compile Include="GUI\GuiSplashScreen.cs" />
     <Compile Include="GUI\GuiStartScreen.cs" />
+    <Compile Include="GUI\ScreenManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <Name>AssemblyInfo</Name>
     </Compile>

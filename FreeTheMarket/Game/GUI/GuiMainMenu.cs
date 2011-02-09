@@ -13,6 +13,7 @@ using GarageGames.Torque.GUI;
 using GarageGames.Torque.MathUtil;
 using Microsoft.Xna.Framework.GamerServices;
 
+using FreeTheMarket.GUI;
 
 namespace FreeTheMarket
 {
@@ -83,6 +84,11 @@ namespace FreeTheMarket
 
             //setup the input map
             SetupInputMap();
+        }
+
+        ~GuiMainMenu()
+        {
+            bool stop = true;
         }
 
 
@@ -157,9 +163,10 @@ namespace FreeTheMarket
         private void On_Option1_Select()
         {
             GuiPlay playGUI = new GuiPlay();
-            GUICanvas.Instance.SetContentControl(playGUI);
             
-            Game.Instance.SceneLoader.Load(@"data\levels\Gameplay.txscene");
+            ScreenManager.Instance.InitializeNewScreen(playGUI);
+            
+            Game.Instance.SceneLoader.Load(@"data\levels\Gameplay.txscene");            
         }
 
 
@@ -168,7 +175,7 @@ namespace FreeTheMarket
         {
             //show the help screen
             GuiHelpScreen helpScreen = new GuiHelpScreen();
-            GUICanvas.Instance.SetContentControl(helpScreen);
+            ScreenManager.Instance.InitializeNewScreen(helpScreen);
         }
 
 
@@ -177,7 +184,7 @@ namespace FreeTheMarket
         {
             //show the credits screen
             GuiCreditsScreen creditsScreen = new GuiCreditsScreen();
-            GUICanvas.Instance.SetContentControl(creditsScreen);
+            ScreenManager.Instance.InitializeNewScreen(creditsScreen);
         }
 
 
@@ -190,8 +197,7 @@ namespace FreeTheMarket
 
 
         GUIButton option3 = new GUIButton();
-
-        bool _showBuy = false;
+        
         int _currentSelection = 0;
         ArrayList _buttons = new ArrayList();
     }

@@ -13,7 +13,7 @@ using GarageGames.Torque.GUI;
 using GarageGames.Torque.MathUtil;
 using Microsoft.Xna.Framework.GamerServices;
 
-
+using FreeTheMarket.GUI;
 
 namespace FreeTheMarket
 {
@@ -41,6 +41,10 @@ namespace FreeTheMarket
             SetupInputMap();
         }
 
+        ~GuiStartScreen()
+        {
+            bool stop = true;
+        }
 
 
         public void OnMainScreenWake(GUIControl mainGUI)
@@ -73,7 +77,7 @@ namespace FreeTheMarket
 
             //load the games' main menu
             GuiMainMenu mainMenu = new GuiMainMenu();
-            GUICanvas.Instance.SetContentControl(mainMenu);
+            ScreenManager.Instance.InitializeNewScreen(mainMenu);
         }
 
 
@@ -84,7 +88,7 @@ namespace FreeTheMarket
 
             //load the games' main menu
             GuiMainMenu mainMenu = new GuiMainMenu();
-            GUICanvas.Instance.SetContentControl(mainMenu);
+            ScreenManager.Instance.InitializeNewScreen(mainMenu);
         }
 
 
@@ -95,7 +99,7 @@ namespace FreeTheMarket
 
             //load the games' main menu
             GuiMainMenu mainMenu = new GuiMainMenu();
-            GUICanvas.Instance.SetContentControl(mainMenu);
+            ScreenManager.Instance.InitializeNewScreen(mainMenu);
         }
 
 
@@ -106,7 +110,7 @@ namespace FreeTheMarket
 
             //load the games' main menu
             GuiMainMenu mainMenu = new GuiMainMenu();
-            GUICanvas.Instance.SetContentControl(mainMenu);
+            ScreenManager.Instance.InitializeNewScreen(mainMenu);
         }
 
     }
