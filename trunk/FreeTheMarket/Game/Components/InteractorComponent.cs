@@ -93,7 +93,7 @@ namespace FreeTheMarket.Components
                             {
 
                                 // If there is a delegate method set up
-                                if (component.InteractionBeginDelegate != null)
+                                if (component.InteractionBeginDelegate != null && this.Owner != null )
                                 {
                                     // TODO if required conditions are true
                                     MovementComponent moveComponent = this.Owner.Components.FindComponent<MovementComponent>();

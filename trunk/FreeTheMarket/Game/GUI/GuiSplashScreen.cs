@@ -29,6 +29,11 @@ namespace FreeTheMarket
             InitializeSplashScreen(ImagePath);
         }
 
+        ~GuiSplashScreen()
+        {
+            bool stop = true;
+        }
+
 
 
         private void InitializeSplashScreen(string ImagePath)

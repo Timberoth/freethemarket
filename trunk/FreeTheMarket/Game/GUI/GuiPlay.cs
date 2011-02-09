@@ -22,10 +22,11 @@ namespace FreeTheMarket
         // Used for camera schooling
         Vector2 _tempPosition;
 
-        // Used in FPS calculation and display
-        float _previousTime;      
+        // Used in FPS calculation and display        
+        float _timeCounter;
+        int _frameCount;
         GUITextStyle _FPSTextStyle;        
-        GUIText _FPSText;
+        GUIText _FPSText;        
 
         public GuiPlay()
         {
@@ -33,14 +34,18 @@ namespace FreeTheMarket
             Name = "GuiPlay";
             Style = playStyle;
             Size = new Vector2(1280, 720);
-            Folder = GUICanvas.Instance;
+            
+            // This assignment is critical to the render process when reloading scenes for some reason.
+            Folder = GUICanvas.Instance;            
 
+            
             _testDialogWindow = new DialogWindow(this, 
                 "Let's see how the dialog window handles this longer piece of text with different spacing.  It looks like this string has been broken up into multiple lines, but the question is how many?  Here is more text that should be put onto another screen.  Here's more text that will continue to roll onto another screen or two after it reaches the end of the window and rolls over.",
                 0.0f, 300.0f, 520.0f, 120.0f);
-
+            
             // FPS Stuff
-            _previousTime = Game.Instance.Engine.TorqueTime;                       
+            _frameCount = 0;
+            _timeCounter = 0.0f;
 
             // Create the text style for all the text.
             _FPSTextStyle = new GUITextStyle();
@@ -58,24 +63,38 @@ namespace FreeTheMarket
             _FPSText.Position = new Vector2(20.0f, 20.0f);
             _FPSText.Visible = true;
             _FPSText.Folder = this;
+             
         }
 
+        ~GuiPlay()
+        {
+            bool stop = true;
+        }
 
         public override void OnRender(Vector2 offset, GarageGames.Torque.MathUtil.RectangleF updateRect)
         {            
             base.OnRender(offset, updateRect);
+            
+            _frameCount++;
 
             // Time in milliseconds
             float time = Game.Instance.Engine.GameTime.ElapsedGameTime.Milliseconds;
-            if (time != 0.0)
-            {
+            _timeCounter += time;
+
+            if (_timeCounter >= 1000.0)
+            {               
                 // FPS in ms = (1/time)
                 // FPS in seconds = FPS in ms * 1000.0
-                float fps = 1000.0f/time;               
+                float fps = (_frameCount/_timeCounter)*1000.0f;
 
                 // Display FPS
-                _FPSText.Text = "FPS: "+fps.ToString();                
+                _FPSText.Text = "FPS: " + fps.ToString();
+
+                // Zero out variables
+                _frameCount = 0;
+                _timeCounter = 0.0f;
             }
+             
             
             T2DSceneCamera camera = (T2DSceneCamera)this.Camera;
             T2DSceneObject player = (T2DSceneObject)TorqueObjectDatabase.Instance.FindObject("Player");

@@ -55,13 +55,21 @@ namespace FreeTheMarket.GUI
             // Load new scene
             Game.Instance.SceneLoader.Load(newScene);
 
-            //create a renderable canvas for the scene     
+            //create a renderable canvas for the scene since the old one
+            // gets destroyed with the unload
+            /*
             GUIStyle stylePlayGui = new GUIStyle();
             GUISceneview playGui = new GUISceneview();
-            playGui.Style = stylePlayGui;
+            playGui.Style = stylePlayGui;            
+             */
+            // THIS IS FUCKING RIDICULOUS THAT THIS HAS TO BE HERE BECAUSE I THINK WE'RE
+            // LEAKING MEMORY.  I really can't figure out any way around it though since a
+            // new sceneview needs to be created but the old one just doesn't seem to get
+            // garbage collected.
+            GuiPlay playGui = new GuiPlay();
 
-            //switch over to the new canvas     
-            GUICanvas.Instance.SetContentControl(playGui);  
+            //switch over to the new scene view
+            GUICanvas.Instance.SetContentControl(playGui);
         }
     }    
 }

@@ -8,7 +8,7 @@ using GarageGames.Torque.T2D;
 using GarageGames.Torque.GUI;
 using GarageGames.Torque.Platform;
 
-
+using FreeTheMarket.GUI;
 
 namespace FreeTheMarket
 {
@@ -54,7 +54,8 @@ namespace FreeTheMarket
         {
             //next show the studio splash screen
             GuiSplashScreen splashScreen = new GuiSplashScreen(@"data\images\TX_BG");
-            GUICanvas.Instance.SetContentControl(splashScreen);
+
+            ScreenManager.Instance.InitializeNewScreen( splashScreen );
         }
 
 
@@ -63,7 +64,7 @@ namespace FreeTheMarket
         {
             //load the main menu
             GuiStartScreen startScreen = new GuiStartScreen();
-            GUICanvas.Instance.SetContentControl(startScreen);
+            ScreenManager.Instance.InitializeNewScreen(startScreen);
         }
 
         #endregion
@@ -79,7 +80,7 @@ namespace FreeTheMarket
 
             //start by showing the GarageGames splash screen
             GuiSplashScreen splashScreen = new GuiSplashScreen(@"data\images\splashStudio");
-            GUICanvas.Instance.SetContentControl(splashScreen);            
+            ScreenManager.Instance.InitializeNewScreen(splashScreen);
         }
         #endregion
 

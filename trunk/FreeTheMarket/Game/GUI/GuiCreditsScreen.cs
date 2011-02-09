@@ -10,7 +10,7 @@ using GarageGames.Torque.Sim;
 using GarageGames.Torque.GUI;
 using GarageGames.Torque.MathUtil;
 
-
+using FreeTheMarket.GUI;
 
 namespace FreeTheMarket
 {
@@ -57,8 +57,8 @@ namespace FreeTheMarket
         private void On_Accept()
         {
             //return to main menu
-            GuiMainMenu mainMenu = new GuiMainMenu();
-            GUICanvas.Instance.SetContentControl(mainMenu);
+            GuiMainMenu mainMenu = new GuiMainMenu();            
+            ScreenManager.Instance.InitializeNewScreen(mainMenu);
         }
     }
 }
