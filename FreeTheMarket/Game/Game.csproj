@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Components\InteractibleComponent.cs" />
     <Compile Include="Components\InteractorComponent.cs" />
+    <Compile Include="Components\LifetimeComponent.cs" />
     <Compile Include="Components\MovementComponent.cs" />
     <Compile Include="Game.cs">
       <Name>Game</Name>
@@ -105,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <Name>AssemblyInfo</Name>
     </Compile>
+    <Compile Include="View\CameraManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="torqueSettings.xml">

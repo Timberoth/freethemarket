@@ -1,5 +1,39 @@
 <TorqueSchema>
   <ExplicitTypes>
+    <Type name="CameraManager" fullName="FreeTheMarket.View.CameraManager">
+      <Element name="Active">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="Components">
+        <IsList>true</IsList>
+        <Type>GarageGames.Torque.Core.TorqueComponent</Type>
+      </Element>
+      <Element name="ObjectType">
+        <Type>GarageGames.Torque.Core.TorqueObjectType</Type>
+      </Element>
+      <Element name="Pool">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="PoolWithComponents">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="IsTemplate">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="IsPersistent">
+        <Type>System.Boolean</Type>
+      </Element>
+      <Element name="OnRegistered">
+        <Type>GarageGames.Torque.Core.OnRegisteredDelegate</Type>
+      </Element>
+      <Element name="Name">
+        <Type>System.String</Type>
+      </Element>
+      <Element name="Instance">
+        <IsStatic>true</IsStatic>
+        <Type>FreeTheMarket.View.CameraManager</Type>
+      </Element>
+    </Type>
     <Type name="DirectionalLight" fullName="GarageGames.Torque.Lighting.DirectionalLight">
       <Element name="AmbientColor">
         <Type>Microsoft.Xna.Framework.Vector3</Type>
@@ -90,6 +124,23 @@
         <Type>System.String</Type>
       </Element>
     </Type>
+    <Type name="LifetimeComponent" fullName="FreeTheMarket.Components.LifetimeComponent">
+      <IsComponent>true</IsComponent>
+      <Element name="Lifetime">
+        <Type>System.Single</Type>
+        <DefaultValue>1.0</DefaultValue>
+      </Element>
+      <Element name="OnLifetime">
+        <Type>FreeTheMarket.Components.LifetimeComponent+OnLifetimeDelegate</Type>
+      </Element>
+      <Element name="Components">
+        <IsList>true</IsList>
+        <Type>GarageGames.Torque.Core.TorqueComponent</Type>
+      </Element>
+      <Element name="Name">
+        <Type>System.String</Type>
+      </Element>
+    </Type>
     <Type name="LinkPoint" fullName="GarageGames.Torque.T2D.T2DLinkPointComponent+XmlLinkPoint">
       <Element name="Name">
         <Type>System.String</Type>
@@ -133,7 +184,7 @@
         <Type>System.Single</Type>
       </Element>
     </Type>
-    <Type name="MovementComponent" fullName="FreeTheMarket.MovementComponent">
+    <Type name="MovementComponent" fullName="FreeTheMarket.Components.MovementComponent">
       <Dependencies>
         <Type>GarageGames.Torque.T2D.T2DPhysicsComponent</Type>
       </Dependencies>
@@ -1601,6 +1652,10 @@
       <IsDelegate>true</IsDelegate>
       <IsInstantiable>false</IsInstantiable>
     </Type>
+    <Type name="OnLifetimeDelegate" fullName="FreeTheMarket.Components.LifetimeComponent+OnLifetimeDelegate">
+      <IsDelegate>true</IsDelegate>
+      <IsInstantiable>false</IsInstantiable>
+    </Type>
     <Type name="OnRegisteredDelegate" fullName="GarageGames.Torque.Core.OnRegisteredDelegate">
       <IsDelegate>true</IsDelegate>
       <IsInstantiable>false</IsInstantiable>
@@ -2051,7 +2106,8 @@
       <DerivedTypes>
         <Type>FreeTheMarket.Components.InteractibleComponent</Type>
         <Type>FreeTheMarket.Components.InteractorComponent</Type>
-        <Type>FreeTheMarket.MovementComponent</Type>
+        <Type>FreeTheMarket.Components.LifetimeComponent</Type>
+        <Type>FreeTheMarket.Components.MovementComponent</Type>
         <Type>GarageGames.Torque.Lighting.T2DLightComponent</Type>
         <Type>GarageGames.Torque.T2D.T2DAnimationComponent</Type>
         <Type>GarageGames.Torque.T2D.T2DCollisionComponent</Type>
