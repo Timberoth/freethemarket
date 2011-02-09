@@ -246,9 +246,6 @@
                     <InteractionDistance>10</InteractionDistance>
                     <CustomStringData></CustomStringData>
                 </InteractibleComponent>
-                <MovementComponent type="FreeTheMarket.MovementComponent">
-                    <PlayerNumber>-1</PlayerNumber>
-                </MovementComponent>
                 <T2DPhysicsComponent type="GarageGames.Torque.T2D.T2DPhysicsComponent">
                     <Velocity>
                         <X>0</X>
