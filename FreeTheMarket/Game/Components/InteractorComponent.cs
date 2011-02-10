@@ -63,15 +63,20 @@ namespace FreeTheMarket.Components
                 // if the button is not being pressed/has been let go of
                 if (!move.Buttons[0].Pushed)
                 {
-                    this._isHeld = false;
                     foreach (T2DSceneObject obj in this._objectsActivated)
                     {
                         InteractibleComponent component = obj.Components.FindComponent<InteractibleComponent>();
                         if (component != null)
                         {
-                            component.InteractionEndDelegate(component.SceneObject, this.SceneObject);
+                            // Deactivate and run end delegate function for each object stored
+                            component.Deactivate();
+                            if (component.InteractionEndDelegate != null && this.Owner != null)
+                            {
+                                component.InteractionEndDelegate(component.SceneObject, this.SceneObject);
+                            }
                         }
                     }
+                    this._isHeld = false;
                 }
 
                 // if player is currently starting to fire action
@@ -84,93 +89,29 @@ namespace FreeTheMarket.Components
                         InteractibleComponent component = current.Components.FindComponent<InteractibleComponent>();
                         if (component != null)
                         {
-                            // If this interactor's action key is equivalent to a component's key
-                            // And if the component is just firing or continuous
-                            if (component.InteractionKey == this.InteractionKey &&
-                                ((component.InteractionType == InteractibleComponent.InteractionTypes.OneShot &&
-                                    !_isHeld) ||
-                                component.InteractionType == InteractibleComponent.InteractionTypes.Continuous))
-                            {
+                            T2DSceneObject parentObject = this.SceneObject;
 
-                                // If there is a delegate method set up
-                                if (component.InteractionBeginDelegate != null && this.Owner != null )
+                            // If the component is in range
+                            if (component.IsInRange(parentObject))
+                            {
+                                // If this interactor's action key is equivalent to a component's key
+                                // And if the component is just firing or continuous
+                                if (component.InteractionKey == this.InteractionKey)
                                 {
-                                    // TODO if required conditions are true
-                                    MovementComponent moveComponent = this.Owner.Components.FindComponent<MovementComponent>();
-                                    if (moveComponent != null)
-                                    {
-                                        T2DSceneObject parentObject = this.SceneObject;
-                                        if (component.InteractionDirection == InteractibleComponent.InteractionDirections.Left &&
-                                                moveComponent.PlayerFacing == MovementComponent.Facing.Right)
+                                    if (!this._isHeld || (
+                                        component.InteractionType == InteractibleComponent.InteractionTypes.Continuous &&
+                                        component.IsActive()))
+                                    {                                        // If there is a delegate method set up
+                                        // Then activate component and fire that method
+                                        component.Activate();
+                                        if (component.InteractionBeginDelegate != null && this.Owner != null)
                                         {
-                                            // If at correct distance
-                                            if (parentObject.Position.X >= current.Position.X - component.InteractionDistance &&
-                                                parentObject.Position.X < current.Position.X &&
-                                                parentObject.Position.Y > current.Position.Y - current.Size.Y / 4 &&
-                                                parentObject.Position.Y < current.Position.Y + current.Size.Y / 4)
-                                            {
-                                                // Then fire that method
-                                                component.InteractionBeginDelegate(current, parentObject);
-                                                // If continuous, restore properties after button release
-                                                if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
-                                                {
-                                                    this._objectsActivated.Add(current);
-                                                }
-                                            }
+                                            component.InteractionBeginDelegate(current, parentObject);
                                         }
-                                        if (component.InteractionDirection == InteractibleComponent.InteractionDirections.Right &&
-                                                moveComponent.PlayerFacing == MovementComponent.Facing.Left)
+                                        // If continuous, restore method after button release
+                                        if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
                                         {
-                                            // If at correct distance
-                                            if (parentObject.Position.X <= current.Position.X + component.InteractionDistance &&
-                                                parentObject.Position.X > current.Position.X &&
-                                                parentObject.Position.Y > current.Position.Y - current.Size.Y / 4 &&
-                                                parentObject.Position.Y < current.Position.Y + current.Size.Y / 4)
-                                            {
-                                                // Then fire that method
-                                                component.InteractionBeginDelegate(current, parentObject);
-                                                // If continuous, restore properties after button release
-                                                if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
-                                                {
-                                                    this._objectsActivated.Add(current);
-                                                }
-                                            }
-                                        }
-                                        if (component.InteractionDirection == InteractibleComponent.InteractionDirections.Up &&
-                                                moveComponent.PlayerFacing == MovementComponent.Facing.Down)
-                                        {
-                                            // If at correct distance
-                                            if (parentObject.Position.Y >= current.Position.Y - component.InteractionDistance &&
-                                                parentObject.Position.Y < current.Position.Y &&
-                                                parentObject.Position.X > current.Position.X - current.Size.X / 4 &&
-                                                parentObject.Position.X < current.Position.X + current.Size.X / 4)
-                                            {
-                                                // Then fire that method
-                                                component.InteractionBeginDelegate(current, parentObject);
-                                                // If continuous, restore properties after button release
-                                                if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
-                                                {
-                                                    this._objectsActivated.Add(current);
-                                                }
-                                            }
-                                        }
-                                        if (component.InteractionDirection == InteractibleComponent.InteractionDirections.Down &&
-                                                moveComponent.PlayerFacing == MovementComponent.Facing.Up)
-                                        {
-                                            // If at correct distance
-                                            if (parentObject.Position.Y <= current.Position.Y + component.InteractionDistance &&
-                                                parentObject.Position.Y > current.Position.Y &&
-                                                parentObject.Position.X > current.Position.X - current.Size.X / 4 &&
-                                                parentObject.Position.X < current.Position.X + current.Size.X / 4)
-                                            {
-                                                // Then fire that method
-                                                component.InteractionBeginDelegate(current, parentObject);
-                                                // If continuous, restore properties after button release
-                                                if (component.InteractionType == InteractibleComponent.InteractionTypes.Continuous)
-                                                {
-                                                    this._objectsActivated.Add(current);
-                                                }
-                                            }
+                                            this._objectsActivated.Add(current);
                                         }
                                     }
                                 }

@@ -136,65 +136,7 @@ namespace FreeTheMarket.Components
 
         public virtual void ProcessTick(Move move, float dt)
         {
-            // Check if the interaction timer is over
-            if (_interactionActive)
-            {
-                _interactionTimer -= dt;
-
-                if (_interactionTimer <= 0.0f)
-                {
-                    _interactionActive = false;
-                    _interactionTimer = 0.0f;
-                }
-            }
-
-            // Need valid move to proceed
-            if (move == null)
-                return;
-
-            List<T2DSceneObject> sceneObjects = TorqueObjectDatabase.Instance.FindObjects<T2DSceneObject>();
-            for (int i = 0; i < sceneObjects.Count; ++i)
-            {
-                T2DSceneObject current = sceneObjects[i];
-
-                // Don't process anything if we're looking at our own pointer.
-                if (current == _sceneObject)
-                {
-                    continue;
-                }
-
-                InteractibleComponent component = current.Components.FindComponent<InteractibleComponent>();
-
-                // On proceed further if this sceneobject actually has the required component.
-                if (component != null)
-                {
-                    // See if we are close enough to interact with it.
-                    Vector2 distanceVector = current.Position - _sceneObject.Position;
-                    float INTERACT_DISTANCE = 10.0f;
-                    if (Math.Abs(distanceVector.Length()) < INTERACT_DISTANCE)
-                    {                        
-                        // Only interact when in range and the Interact button is pressed.
-                        if ( move.Buttons.Count > 0 && move.Buttons[0].Pushed )
-                        {                            
-                            if (!_interactionActive)
-                            {
-                                System.Console.WriteLine("Start Interaction");
-
-                                // DO SOMETHING HERE, the function called here must be able to be called
-                                // mutliple times without breaking anything.
-                                // InteractionFunction();
-
-                                // Mark that the interaction has started so we can freeze it for a 
-                                // small amount of time before it can be fired again.
-                                _interactionActive = true;
-
-                               // Set the timer to release the interaction after a certain amount of time.
-                                _interactionTimer = 0.25f;
-                            }
-                        }
-                    }                    
-                }
-            }
+             
         }
       
         public virtual void InterpolateTick(float k)
@@ -205,8 +147,94 @@ namespace FreeTheMarket.Components
         public override void CopyTo(TorqueComponent obj)
         {
             base.CopyTo(obj);
+            InteractibleComponent obj2 = obj as InteractibleComponent;
+            obj2.PlayerNumber = this.PlayerNumber;
+            obj2.InteractionKey = this.InteractionKey;
+            obj2.InteractionDirection = this.InteractionDirection;
+            obj2.InteractionType = this.InteractionType;
+            obj2.InteractionDistance = this.InteractionDistance;
+            obj2.CustomStringData = this.CustomStringData;
+            obj2.InteractionBeginDelegate = this.InteractionBeginDelegate;
+            obj2.InteractionEndDelegate = this.InteractionEndDelegate;
 
             // TODO copy all private fields
+        }
+
+        // Mark object as active
+        public void Activate()
+        {
+            this._interactionActive = true;
+        }
+
+        // Mark object as inactive
+        public void Deactivate()
+        {
+            this._interactionActive = false;
+        }
+
+        // Check if object is active
+        public bool IsActive()
+        {
+            return this._interactionActive;
+        }
+
+        // Check if interactor is in range of this object
+        public bool IsInRange(T2DSceneObject theirObject)
+        {
+            MovementComponent moveComponent = theirObject.Components.FindComponent<MovementComponent>();
+            T2DSceneObject ourObject = this.SceneObject;
+            if (moveComponent != null)
+            {
+                if (this.InteractionDirection == InteractionDirections.Left &&
+                    moveComponent.PlayerFacing == MovementComponent.Facing.Right)
+                {
+                    // If at correct distance
+                    if (theirObject.Position.X >= ourObject.Position.X - this.InteractionDistance &&
+                        theirObject.Position.X < ourObject.Position.X &&
+                        theirObject.Position.Y > ourObject.Position.Y - ourObject.Size.Y / 4 &&
+                        theirObject.Position.Y < ourObject.Position.Y + ourObject.Size.Y / 4)
+                    {
+                        return true;
+                    }
+                }
+                else if (this.InteractionDirection == InteractibleComponent.InteractionDirections.Right &&
+                    moveComponent.PlayerFacing == MovementComponent.Facing.Left)
+                {
+                    // If at correct distance
+                    if (theirObject.Position.X <= ourObject.Position.X + this.InteractionDistance &&
+                        theirObject.Position.X > ourObject.Position.X &&
+                        theirObject.Position.Y > ourObject.Position.Y - ourObject.Size.Y / 4 &&
+                        theirObject.Position.Y < ourObject.Position.Y + ourObject.Size.Y / 4)
+                    {
+                        return true;
+                    }
+                }
+                else if (this.InteractionDirection == InteractibleComponent.InteractionDirections.Up &&
+                        moveComponent.PlayerFacing == MovementComponent.Facing.Down)
+                {
+                    // If at correct distance
+                    if (theirObject.Position.Y >= ourObject.Position.Y - this.InteractionDistance &&
+                        theirObject.Position.Y < ourObject.Position.Y &&
+                        theirObject.Position.X > ourObject.Position.X - ourObject.Size.X / 4 &&
+                        theirObject.Position.X < ourObject.Position.X + ourObject.Size.X / 4)
+                    {
+                        return true;
+                    }
+                }
+                else if (this.InteractionDirection == InteractibleComponent.InteractionDirections.Down &&
+                        moveComponent.PlayerFacing == MovementComponent.Facing.Up)
+                {
+                    // If at correct distance
+                    if (theirObject.Position.Y <= ourObject.Position.Y + this.InteractionDistance &&
+                        theirObject.Position.Y > ourObject.Position.Y &&
+                        theirObject.Position.X > ourObject.Position.X - ourObject.Size.X / 4 &&
+                        theirObject.Position.X < ourObject.Position.X + ourObject.Size.X / 4)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         // Destroy the object being interacted with.
@@ -332,7 +360,7 @@ namespace FreeTheMarket.Components
         // Track player controlling this object, if any
         int _playerNumber = -1;
 
-        // Make sure interaction isn't hit multiple times
+        // Keeps track of active status
         bool _interactionActive = false;
 
         // Keep track of how long the interaction should be frozen.
