@@ -97,7 +97,6 @@ namespace FreeTheMarket.Components
         
         #endregion
 
-        
         //======================================================
         #region Public Methods
         public void InterpolateTick(float k)
